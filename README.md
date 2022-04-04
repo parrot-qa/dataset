@@ -1,5 +1,9 @@
 # Database schema
 
+We will use MongoDB for our database needs. MongoDB being no-SQL natively supports JSON structured documents, which will make it straightfoward to import/export data locally as needed.
+
+In MongoDB, documents are grouped and stored in "collections", which are equivalent to tables in a traditional RDBMS sense. For more details, see: https://www.mongodb.com/docs/manual/core/databases-and-collections/
+
 ## Courses
 
 This collection stores data about the courses that are present in the dataset. This can be used, for example, to filter documents by relevant course during training.
