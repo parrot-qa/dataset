@@ -7,8 +7,8 @@ This collection stores data about the courses that are present in the dataset. T
 ```jsonc
 [
     {
-        "_id": "", // [auto-generated]
-        "name": "DS100", // [unique]
+        "_id": "",        // [auto-generated]
+        "name": "DS100",  // [unique]
         "uri": "https://ds100.org/fa21/",
         // [optional] other meta data, licenses, etc.
     },
@@ -23,11 +23,11 @@ This collection stores all information pertaining to raw documents: HTML files, 
 ```jsonc
 [
     {
-        "_id": "", // [auto-generated]
-        "course": "DS100", // [foreign key]
-        "name": "", // [optional]
-        "uri": "https://ds100.org/fa21/grad_proj/gradproject/", // [unique]
-        "type": "html", // [html|pdf|ppt]
+        "_id": "",                                               // [auto-generated]
+        "course": "DS100",                                       // [foreign key]
+        "name": "",                                              // [optional]
+        "uri": "https://ds100.org/fa21/grad_proj/gradproject/",  // [unique]
+        "type": "html",                                          // [html|pdf|ppt]
         "raw": "<!DOCTYPE html>\n<html lang=\"en-US\">\n<head>\n  <meta charset=\"UTF-8\">\n <title>Graduate Project - Data 100</title>\n\n ..."
     },
     // ...
@@ -41,9 +41,9 @@ This collection stores documents in a generic format that is most relevant for m
 ```jsonc
 [
     {
-        "_id": "", // [auto-generated]
-        "material": "https://ds100.org/fa21/grad_proj/gradproject/", // [foreign key]
-        "title": "Graduate Project\nRubrics", // [unique], \n separated if hierarchial
+        "_id": "",                                                    // [auto-generated]
+        "material": "https://ds100.org/fa21/grad_proj/gradproject/",  // [foreign key]
+        "title": "Graduate Project\nRubrics",                         // [unique], \n separated if hierarchial
         "contents": [
             {
                 "tags": "plain", // [code|table|list|plain]
