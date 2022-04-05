@@ -6,9 +6,9 @@ import requests
 
 
 def _read_api_key():
-    with open('.secrets/google-drive-api.json', 'r') as fp:
+    with open('.secrets/config.json', 'r') as fp:
         conf = json.load(fp)
-        return conf['api_key']
+        return conf['google_drive_api_key']
 
 
 GOOGLE_DRIVE_API_URL = 'https://www.googleapis.com/drive/v3'
