@@ -51,7 +51,7 @@ MATERIALS_SCHEMA = {
                 'description': 'must be a string and is required'
             },
             'type': {
-                'enum': ['html', 'pdf', 'docx', 'pptx', 'xlsx', 'csv', 'tsv'],
+                'enum': ['html', 'pdf', 'docx', 'pptx', 'xlsx', 'csv', 'tsv', 'txt'],
                 'description': 'must be one of valid document types'
             },
             'raw': {

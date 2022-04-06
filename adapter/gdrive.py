@@ -15,15 +15,11 @@ GOOGLE_DRIVE_API_URL = 'https://www.googleapis.com/drive/v3'
 GOOGLE_DRIVE_API_KEY = _read_api_key()
 
 FILE_ID_PATTERN = re.compile(r'^[-_a-z0-9]+$', re.IGNORECASE)
-MIME_TYPE_OPTIONS = ['application/pdf', 'application/json', 'text/html']
 
 
 def download(file_id, mime_type):
     if not FILE_ID_PATTERN.match(file_id):
         raise ValueError(f'Invalid file ID: Must match pattern {FILE_ID_PATTERN.pattern}')
-
-    if mime_type not in MIME_TYPE_OPTIONS:
-        raise ValueError(f'Invalid mime type: Must be one of {", ".join(MIME_TYPE_OPTIONS)}')
 
     url = f'{GOOGLE_DRIVE_API_URL}/files/{file_id}/export'
     resp = requests.get(url, {'mimeType': mime_type, 'key': GOOGLE_DRIVE_API_KEY})
