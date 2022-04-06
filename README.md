@@ -103,7 +103,7 @@ This collection stores the raw data for question-answers, collected from forums 
         "content": "<p>Hey! I&#39;ve noticed that my regrade.."  // [Raw HTML formatted text of the question]
         "student_answer": "None",                                // [Either contains raw HTML answer or None]
         "instructor_answer": "<p>Will look into it and..."       // [Either contains raw HTML or None]
-                                                                 //  ATLEAST one will not be None (can be both)
+        "folder" : ["other"]                                     // [The folder that the student put the question in]
     },
     // ...
 ]
