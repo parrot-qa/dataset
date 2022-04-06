@@ -22,15 +22,19 @@ def download_material(args):
         file_type = match.group(1)
         file_id = match.group(2)
         text = gdrive.download(file_id, 'application/pdf')
+        extn = '.pdf'
     else:
         resp = requests.get(args.uri)
         resp.raise_for_status()
-        print(resp.headers['content-type'])
-        if 'text/html' not in resp.headers['content-type']:
+        if 'text/html' in resp.headers['content-type']:
+            extn = '.html'
+        elif 'application/pdf' in resp.headers['content-type']:
+            extn = '.pdf'
+        else:
             raise RuntimeError('Unknown URI type, it was neither Google Drive nor HTML!')
         text = resp.content
 
-    with open(os.path.join(outdir, args.name), 'wb') as fp:
+    with open(os.path.join(outdir, args.name + extn), 'wb') as fp:
         fp.write(text)
 
 
