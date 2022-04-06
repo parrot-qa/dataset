@@ -75,19 +75,8 @@ This collection stores the raw data for question-answers, collected from forums 
         "course": "DS100",                                // [foreign key]
         "uri": "https://piazza.com/class/ksqyjn4qfo7c5",  // [unique]
         "type": "piazza",                                 // [piazza|<future_extensions>]
-        "raw": [                                          // Piazza JSON data
-            {
-                "folders": [
-                    "logistics",
-                    "other"
-                ],
-                "nr": 1421,
-                "created": "2019-12-30T23:20:16Z",
-                "bucket_order": 0,
-                "no_answer_followup": 0
-            }
-        ] // ... showing snippet for brevity
-    },
+        "raw": "[{\"folders\": [\"logistics\", \"other\"], \"nr\": 1421, \"created\": \"2019-12-30T23:20:16Z\", \"bucket_order\": 0, \"no_answer_followup\": 0}]"
+    }
     // ...
 ]
 ```

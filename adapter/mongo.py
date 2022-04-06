@@ -63,6 +63,33 @@ MATERIALS_SCHEMA = {
     'index': 'uri'
 }
 
+FORUMS_SCHEMA = {
+    'name': 'forums',
+    'schema': {
+        'bsonType': 'object',
+        'required': ['course', 'uri', 'type', 'raw'],
+        'properties': {
+            'course': {
+                'bsonType': 'string',
+                'description': 'must be a string and is required'
+            },
+            'uri': {
+                'bsonType': 'string',
+                'description': 'must be a string and is required'
+            },
+            'type': {
+                'enum': ['piazza'],
+                'description': 'must be one of valid document types'
+            },
+            'raw': {
+                'bsonType': 'string',
+                'description': 'must be a string and is required'
+            }
+        }
+    },
+    'index': 'uri'
+}
+
 
 def connect(db_name='test'):
     if not DB_NAME_PATTERN.match(db_name):
