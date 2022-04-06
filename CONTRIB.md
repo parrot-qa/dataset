@@ -6,6 +6,8 @@ Use the `create_secrets.py` utility to setup your environment:
 python create_secrets.py --help
 ```
 
+MongoDB instance: https://cloud.mongodb.com/v2/6176004f2c8d3d2789212b25
+
 # Python Packages
 
 A `venv` is preferred to keep packages clearly identified and organized.
