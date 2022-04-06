@@ -43,8 +43,8 @@ MATERIALS_SCHEMA = {
         'required': ['course', 'uri', 'type', 'raw'],
         'properties': {
             'course': {
-                'bsonType': 'string',
-                'description': 'must be a string and is required'
+                'bsonType': 'objectId',
+                'description': 'must be an ObjectId and is required'
             },
             'uri': {
                 'bsonType': 'string',
@@ -70,8 +70,8 @@ FORUMS_SCHEMA = {
         'required': ['course', 'uri', 'type', 'raw'],
         'properties': {
             'course': {
-                'bsonType': 'string',
-                'description': 'must be a string and is required'
+                'bsonType': 'objectId',
+                'description': 'must be an ObjectId and is required'
             },
             'uri': {
                 'bsonType': 'string',
