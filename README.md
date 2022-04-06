@@ -83,7 +83,20 @@ This collection stores the raw data for question-answers, collected from forums 
 
 ## Question-Answers
 
-TODO: @97emilylc
+```jsonc
+[
+    {
+        "course": "DS100"                                        // [Course name]
+        "id": "",                                                // [Piazza ID code, unique]
+        "subject": "Regrade submissions did not go through",     // [Subject line of Piazza Post]
+        "content": "<p>Hey! I&#39;ve noticed that my regrade.."  // [Raw HTML formatted text of the question]
+        "student_answer": "None",                                // [Either contains raw HTML answer or None]
+        "instructor_answer": "<p>Will look into it and..."       // [Either contains raw HTML or None]
+        "folder" : ["other"]                                     // [The folder that the student put the question in]
+    },
+    // ...
+]
+```
 
 # dataset
 
