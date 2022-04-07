@@ -1,8 +1,10 @@
 import os
 import re
+import json
+
 import requests
 
-from adapter import gdrive
+from adapter import gdrive, piazza
 
 
 DATA_DIR = '.cache'
@@ -39,8 +41,11 @@ def download_material(args):
 
 
 def download_forum(args):
-    _setup_dir('forums', args.course)
-    raise NotImplementedError()
+    outdir = _setup_dir('forums', args.course)
+    handle = piazza.login()
+    posts = piazza.download_posts(handle, args.class_id)
+    with open(os.path.join(outdir, args.name + '.json'), 'w') as fp:
+        json.dump(posts, fp)
 
 
 if __name__ == '__main__':
