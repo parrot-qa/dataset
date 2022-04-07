@@ -14,6 +14,7 @@ def download_posts(p, course_id):
     for post in course_posts:
         raw_posts.append(post)
         time.sleep(1)
+    return raw_posts
 
 
 if __name__ == '__main__':
