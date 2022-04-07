@@ -1,10 +1,19 @@
+import time
+from piazza_api import Piazza
+
 def login():
-    pass
+    p = Piazza()
+    p.user_login()
+    return p
 
 
-def download_posts(course_id):
-    # TODO
-    pass
+def download_posts(p, course_id):
+    course_net = p.network(course_id)
+    course_posts = course_net.iter_all_posts()
+    raw_posts = []
+    for post in course_posts:
+        raw_posts.append(post)
+        time.sleep(1)
 
 
 if __name__ == '__main__':
