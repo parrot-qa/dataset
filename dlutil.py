@@ -22,9 +22,14 @@ def download_material(args):
 
     if match := re.match(r'https://docs.google.com/(\w+)/d/([-_a-z0-9]+)/', args.uri, re.IGNORECASE):
         file_type = match.group(1)
+        if file_type == 'document':
+            mime_type = 'text/html'
+            extn = '.html'
+        else:
+            mime_type = 'application/pdf'
+            extn = '.pdf'
         file_id = match.group(2)
-        text = gdrive.download(file_id, 'application/pdf')
-        extn = '.pdf'
+        text = gdrive.download(file_id, mime_type)
     else:
         resp = requests.get(args.uri)
         resp.raise_for_status()
