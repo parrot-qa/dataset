@@ -1,5 +1,6 @@
 # Space for developer experiments
-playground.*
+playground/
+playground*
 
 # Config data
 .secrets

@@ -11,8 +11,8 @@ This collection stores data about the courses that are present in the dataset. T
 ```jsonc
 [
     {
-        "_id": "",        // [auto-generated]
-        "name": "DS100",  // [unique]
+        "_id": "11111111",  // [auto-generated]
+        "name": "DS100",    // [unique]
         "uri": "https://ds100.org/fa21/",
         // [optional] other meta data, licenses, etc.
     },
@@ -27,8 +27,8 @@ This collection stores all information pertaining to raw documents: HTML files, 
 ```jsonc
 [
     {
-        "_id": "",                                               // [auto-generated]
-        "course": "DS100",                                       // [foreign key]
+        "_id": "22222222",                                       // [auto-generated]
+        "course": "ObjectId(11111111)",                          // [foreign key]
         "name": "",                                              // [optional]
         "uri": "https://ds100.org/fa21/grad_proj/gradproject/",  // [unique]
         "type": "html",                                          // [html|pdf|ppt]
@@ -45,9 +45,9 @@ This collection stores documents in a generic format that is most relevant for m
 ```jsonc
 [
     {
-        "_id": "",                                                    // [auto-generated]
-        "material": "https://ds100.org/fa21/grad_proj/gradproject/",  // [foreign key]
-        "title": "Graduate Project\nRubrics",                         // [unique], \n separated if hierarchial
+        "_id": "33333333",                     // [auto-generated]
+        "material": "ObjectId(22222222)",      // [foreign key]
+        "title": "Graduate Project\nRubrics",  // [unique], \n separated if hierarchial
         "contents": [
             {
                 "tags": "plain", // [code|table|list|plain]
@@ -71,23 +71,12 @@ This collection stores the raw data for question-answers, collected from forums 
 ```jsonc
 [
     {
-        "_id": "",                                        // [auto-generated]
-        "course": "DS100",                                // [foreign key]
+        "_id": "44444444",                                // [auto-generated]
+        "course": "ObjectId(11111111)",                   // [foreign key]
         "uri": "https://piazza.com/class/ksqyjn4qfo7c5",  // [unique]
         "type": "piazza",                                 // [piazza|<future_extensions>]
-        "raw": [                                          // Piazza JSON data
-            {
-                "folders": [
-                    "logistics",
-                    "other"
-                ],
-                "nr": 1421,
-                "created": "2019-12-30T23:20:16Z",
-                "bucket_order": 0,
-                "no_answer_followup": 0
-            }
-        ] // ... showing snippet for brevity
-    },
+        "raw": "[{\"folders\": [\"logistics\", \"other\"], \"nr\": 1421, \"created\": \"2019-12-30T23:20:16Z\", \"bucket_order\": 0, \"no_answer_followup\": 0}]"
+    }
     // ...
 ]
 ```
@@ -97,12 +86,12 @@ This collection stores the raw data for question-answers, collected from forums 
 ```jsonc
 [
     {
-        "course": "DS100"                                        // [Course name]
-        "id": "",                                                // [Piazza ID code, unique]
+        "course": "ObjectId(44444444)",                          // [Course ref]
+        "_id": "55555555",                                       // [Piazza ID code, unique]
         "subject": "Regrade submissions did not go through",     // [Subject line of Piazza Post]
-        "content": "<p>Hey! I&#39;ve noticed that my regrade.."  // [Raw HTML formatted text of the question]
-        "student_answer": "None",                                // [Either contains raw HTML answer or None]
-        "instructor_answer": "<p>Will look into it and..."       // [Either contains raw HTML or None]
+        "content": "Hey! I've noticed that my regrade..",        // [Parsed text of the question]
+        "student_answer": "",                                    // [Either contains parsed text answer or empty]
+        "instructor_answer": "Will look into it and...",         // [Either contains parsed text answer or empty]
         "folder" : ["other"]                                     // [The folder that the student put the question in]
     },
     // ...
