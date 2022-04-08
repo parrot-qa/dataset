@@ -89,9 +89,9 @@ This collection stores the raw data for question-answers, collected from forums 
         "course": "ObjectId(44444444)",                          // [Course ref]
         "_id": "55555555",                                       // [Piazza ID code, unique]
         "subject": "Regrade submissions did not go through",     // [Subject line of Piazza Post]
-        "content": "<p>Hey! I&#39;ve noticed that my regrade..", // [Raw HTML formatted text of the question]
-        "student_answer": "None",                                // [Either contains raw HTML answer or None]
-        "instructor_answer": "<p>Will look into it and...",      // [Either contains raw HTML or None]
+        "content": "Hey! I've noticed that my regrade..",        // [Parsed text of the question]
+        "student_answer": "",                                    // [Either contains parsed text answer or empty]
+        "instructor_answer": "Will look into it and...",         // [Either contains parsed text answer or empty]
         "folder" : ["other"]                                     // [The folder that the student put the question in]
     },
     // ...
