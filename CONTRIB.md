@@ -8,8 +8,11 @@ python -m venv .venv
 # Activate
 source ./.venv/Scripts/activate  # For POSIX
 ./.venv/Scripts/Activate.ps1     # For Windows
+```
 
-# Install required dependencies
+Whether using a `venv` or not, run this command to install dependencies:
+
+```
 pip install -r requirements.txt
 ```
 
