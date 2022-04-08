@@ -1,13 +1,3 @@
-# Authentication
-
-Use the `create_secrets.py` utility to setup your environment:
-
-```sh
-python create_secrets.py --help
-```
-
-MongoDB instance: https://cloud.mongodb.com/v2/6176004f2c8d3d2789212b25
-
 # Python Packages
 
 A `venv` is preferred to keep packages clearly identified and organized.
@@ -19,14 +9,19 @@ python -m venv .venv
 source ./.venv/Scripts/activate  # For POSIX
 ./.venv/Scripts/Activate.ps1     # For Windows
 
+# Install required dependencies
 pip install -r requirements.txt
 ```
 
-If you add any new packages, please update requirements.txt as follows:
+# Authentication
 
+Use the `create_secrets.py` utility to setup your environment:
+
+```sh
+python create_secrets.py [gkey] [path/to/mlicense]
 ```
-pip freeze > requirements.txt
-```
+
+MongoDB instance: https://cloud.mongodb.com/v2/6176004f2c8d3d2789212b25
 
 # Coding guidelines
 
