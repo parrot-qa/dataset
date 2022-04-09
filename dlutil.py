@@ -3,19 +3,9 @@ import re
 import json
 
 import requests
-import pandas as pd
 
+from common import setup_dir, read_spec, validate_spec, ArgsWrapper
 from adapters import gdrive, piazza
-
-
-DATA_DIR = '.cache'
-
-
-def _setup_dir(collection, course):
-    path = os.path.join(DATA_DIR, collection, course)
-    if not os.path.isdir(path):
-        os.makedirs(path)
-    return path
 
 
 def get_material(args):
@@ -44,7 +34,7 @@ def get_material(args):
 
 
 def download_material(args):
-    outdir = _setup_dir('materials', args.course)
+    outdir = setup_dir('materials', args.course)
     text, extn = get_material(args)
     with open(os.path.join(outdir, args.name + extn), 'wb') as fp:
         fp.write(text)
@@ -61,19 +51,14 @@ def get_forum(args):
 
 
 def download_forum(args):
-    outdir = _setup_dir('forums', args.course)
+    outdir = setup_dir('forums', args.course)
     posts = get_forum(args)
     with open(os.path.join(outdir, args.name + '.json'), 'w') as fp:
         json.dump(posts, fp, indent=4)
 
 
 def download_bulk(args):
-    class ArgsWrapper:
-        def __init__(self, **kwargs):
-            for k, v in kwargs.items():
-                setattr(self, k, v)
-
-    course, collection, _ = os.path.basename(args.spec_file).split('.')
+    course, collection, df = read_spec(args.spec_file)
     if collection == 'materials':
         download_fn = download_material
     elif collection == 'forums':
@@ -81,13 +66,7 @@ def download_bulk(args):
     else:
         raise RuntimeError('Unknown collection, should be one of: materials, forums')
 
-    df = pd.read_csv(args.spec_file)
-    dup_uri = df.duplicated('uri', keep=False)
-    dup_name = df.duplicated('name', keep=False)
-    dup_df = df[dup_uri | dup_name]
-    if len(dup_df) > 0:
-        print('Duplicate entries! Please fix and try again:')
-        print(dup_df)
+    if validate_spec(df) == False:
         return
 
     for _, row in df.iterrows():
