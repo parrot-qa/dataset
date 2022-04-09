@@ -51,9 +51,13 @@ def download_material(args):
 
 
 def get_forum(args):
-    handle = piazza.login()
-    posts = piazza.download_posts(handle, args.class_id)
-    return posts
+    if m := re.match(r'https://piazza\.com/class/(\w+)$', args.uri, re.IGNORECASE):
+        class_id = m.group(1)
+        handle = piazza.login()
+        posts = piazza.download_posts(handle, class_id)
+        return posts
+    else:
+        raise RuntimeError('Unknown URI type, only Piazza links are supported currently.')
 
 
 def download_forum(args):
@@ -69,7 +73,14 @@ def download_bulk(args):
             for k, v in kwargs.items():
                 setattr(self, k, v)
 
-    course = os.path.basename(args.spec_file).split('.')[0]
+    course, collection, _ = os.path.basename(args.spec_file).split('.')
+    if collection == 'materials':
+        download_fn = download_material
+    elif collection == 'forums':
+        download_fn = download_forum
+    else:
+        raise RuntimeError('Unknown collection, should be one of: materials, forums')
+
     df = pd.read_csv(args.spec_file)
     dup_uri = df.duplicated('uri', keep=False)
     dup_name = df.duplicated('name', keep=False)
@@ -81,7 +92,7 @@ def download_bulk(args):
 
     for _, row in df.iterrows():
         try:
-            download_material(ArgsWrapper(course=course, name=row['name'], uri=row['uri']))
+            download_fn(ArgsWrapper(course=course, name=row['name'], uri=row['uri']))
             print(f'Completed: {row["name"]}: {row["uri"]}')
         except Exception as e:
             print(f'Failed: {row["name"]}: {row["uri"]}')
@@ -103,11 +114,11 @@ if __name__ == '__main__':
     f_parser = subparsers.add_parser('forum')
     f_parser.add_argument('course', help='course to which the forum belongs')
     f_parser.add_argument('name', help='name of the document to save with')
-    f_parser.add_argument('class_id', help='class ID on Piazza')
+    f_parser.add_argument('uri', help='link to forums (Piazza class)')
     f_parser.set_defaults(func=download_forum)
 
     b_parser = subparsers.add_parser('bulk')
-    b_parser.add_argument('spec_file', help='file named <course>.materials.csv, containing name and links')
+    b_parser.add_argument('spec_file', help='file named <course>.<collection>.csv, containing name, links, etc.')
     b_parser.set_defaults(func=download_bulk)
 
     args = parser.parse_args()
