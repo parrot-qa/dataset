@@ -100,6 +100,6 @@ This collection stores the raw data for question-answers, collected from forums 
 
 # dataset
 
-- https://inst.eecs.berkeley.edu/~cs61a/fa21/
-- https://sp21.datastructur.es/
-- https://ds100.org/fa21/
+- https://cs61a.org/
+- https://inst.eecs.berkeley.edu/~cs61b/sp22/
+- https://ds100.org/sp19/
