@@ -5,7 +5,7 @@ import json
 import requests
 import pandas as pd
 
-from adapter import gdrive, piazza
+from adapters import gdrive, piazza
 
 
 DATA_DIR = '.cache'
@@ -60,7 +60,7 @@ def download_forum(args):
     outdir = _setup_dir('forums', args.course)
     posts = get_forum(args)
     with open(os.path.join(outdir, args.name + '.json'), 'w') as fp:
-        json.dump(posts, fp)
+        json.dump(posts, fp, indent=4)
 
 
 def download_bulk(args):
@@ -79,16 +79,13 @@ def download_bulk(args):
         print(dup_df)
         return
 
-    if args.to == 'local':
-        for _, row in df.iterrows():
-            try:
-                download_material(ArgsWrapper(course=course, name=row['name'], uri=row['uri']))
-                print(f'Completed: {row["name"]}: {row["uri"]}')
-            except Exception as e:
-                print(f'Failed: {row["name"]}: {row["uri"]}')
-                print(f'>', e)
-    else:
-        raise NotImplementedError()
+    for _, row in df.iterrows():
+        try:
+            download_material(ArgsWrapper(course=course, name=row['name'], uri=row['uri']))
+            print(f'Completed: {row["name"]}: {row["uri"]}')
+        except Exception as e:
+            print(f'Failed: {row["name"]}: {row["uri"]}')
+            print(f'>', e)
 
 
 if __name__ == '__main__':
@@ -110,8 +107,7 @@ if __name__ == '__main__':
     f_parser.set_defaults(func=download_forum)
 
     b_parser = subparsers.add_parser('bulk')
-    b_parser.add_argument('spec_file', help='file named <course>.csv, containing name and links')
-    b_parser.add_argument('--to', help='where to download the files', choices=['local', 'mongodb'], default='local')
+    b_parser.add_argument('spec_file', help='file named <course>.materials.csv, containing name and links')
     b_parser.set_defaults(func=download_bulk)
 
     args = parser.parse_args()
