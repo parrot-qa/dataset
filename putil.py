@@ -9,7 +9,7 @@ from parsers import html, pdf, piazza
 def parse_material(args):
     outdir = setup_dir('documents', args.course)
 
-    infiles = glob.glob(os.path.join(DATA_DIR, 'materials', args.course, f'{args.name}.*'))
+    infiles = glob.glob(os.path.join(DATA_DIR, 'materials', args.course, f'{glob.escape(args.name)}.*'))
     if len(infiles) == 1:
         extn = infiles[0].split('.')[-1]
         if extn == 'pdf':
@@ -30,7 +30,7 @@ def parse_material(args):
 def parse_forum(args):
     outdir = setup_dir('qa_pairs', args.course)
 
-    infiles = glob.glob(os.path.join(DATA_DIR, 'forums', args.course, f'{args.name}.*'))
+    infiles = glob.glob(os.path.join(DATA_DIR, 'forums', args.course, f'{glob.escape(args.name)}.*'))
     if len(infiles) == 1:
         extn = infiles[0].split('.')[-1]
         if extn == 'json':
