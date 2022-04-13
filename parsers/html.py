@@ -121,6 +121,15 @@ def extract_text(path, *args, **kwargs) -> list[dict]:
     return sections
 
 
+def extract_text_basic(html):
+    soup = BeautifulSoup(html, features='html.parser')
+    text = ' '.join(soup.stripped_strings)
+    return text
+
+
 if __name__ == '__main__':
     sections = extract_text('.cache/materials/DS100/1_1__The_Students_of_Data_100.html')
     assert type(sections) == list
+
+    text = extract_text_basic('<p>\nHello!\n<b> How are you doing? </b>\n</p>')
+    print(text)
