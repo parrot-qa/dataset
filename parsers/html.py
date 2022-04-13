@@ -60,6 +60,9 @@ def categorize_documents(content, prefix=None, max_depth=6):
             stack.append(c[1])
             level.append(h)
         else:
+            if len(stack) == 0:
+                # Don't capture text before the first heading
+                continue
             docs.append((tuple(stack), *c))
 
     return docs
@@ -119,5 +122,5 @@ def extract_text(path, *args, **kwargs) -> list[dict]:
 
 
 if __name__ == '__main__':
-    sections = extract_text('.cache/materials/DS100/gradproject.html')
+    sections = extract_text('.cache/materials/DS100/1_1__The_Students_of_Data_100.html')
     assert type(sections) == list
