@@ -43,9 +43,9 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
         i_answer, s_answer = get_answers(post)
         post_dict = {"id": post.get("id"),
                      "subject": get_subject(post),
-                     "content": get_question_content(post),
-                     "student_answer": s_answer,
-                     "instructor_answer": i_answer,
+                     "content": extract_text_basic(get_question_content(post)),
+                     "student_answer": extract_text_basic(s_answer),
+                     "instructor_answer": extract_text_basic(i_answer),
                      "folders": post.get("folders")}
         formatted_QA.append(post_dict)
 
