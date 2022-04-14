@@ -1,6 +1,6 @@
-import json
 
 from .html import extract_text_basic
+import json
 
 
 def extract_question_posts(post_list):
@@ -49,7 +49,7 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
                      "folders": post.get("folders")}
         formatted_QA.append(post_dict)
 
-    return formmated_QA
+    return formatted_QA
 
 
 if __name__ == '__main__':
