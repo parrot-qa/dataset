@@ -1,6 +1,6 @@
-
-from html import extract_text_basic
 import json
+
+from .html import extract_text_basic
 
 
 def extract_question_posts(post_list):
