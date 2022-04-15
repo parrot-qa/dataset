@@ -18,9 +18,9 @@ def get_material(args):
             mime_type = 'application/pdf'
             extn = '.pdf'
         file_id = match.group(2)
-        text = gdrive.download(file_id, mime_type)
+        text = gdrive.download(file_id, mime_type, **getattr(args, 'dlflags', {}))
     else:
-        resp = requests.get(args.uri)
+        resp = requests.get(args.uri, **getattr(args, 'dlflags', {}))
         resp.raise_for_status()
         if 'text/html' in resp.headers['content-type']:
             extn = '.html'
@@ -44,7 +44,7 @@ def get_forum(args):
     if m := re.match(r'https://piazza\.com/class/(\w+)$', args.uri, re.IGNORECASE):
         class_id = m.group(1)
         handle = piazza.login()
-        posts = piazza.download_posts(handle, class_id)
+        posts = piazza.download_posts(handle, class_id, **getattr(args, 'dlflags', {}))
         return posts
     else:
         raise RuntimeError('Unknown URI type, only Piazza links are supported currently.')
@@ -71,7 +71,8 @@ def download_bulk(args):
 
     for _, row in df.iterrows():
         try:
-            download_fn(ArgsWrapper(course=course, name=row['name'], uri=row['uri']))
+            dlflags = json.loads(row['dlflags']) if 'dlflags' in row else {}
+            download_fn(ArgsWrapper(course=course, name=row['name'], uri=row['uri'], dlflags=dlflags))
             print(f'Completed: {row["name"]}: {row["uri"]}')
         except Exception as e:
             print(f'Failed: {row["name"]}: {row["uri"]}')
