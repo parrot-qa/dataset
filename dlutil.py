@@ -71,8 +71,8 @@ def download_bulk(args):
 
     for _, row in df.iterrows():
         try:
-            params = json.loads(row['dlflags']) if 'dlflags' in row else {}
-            download_fn(ArgsWrapper(course=course, name=row['name'], uri=row['uri'], dlflags=params))
+            dlflags = json.loads(row['dlflags']) if 'dlflags' in row else {}
+            download_fn(ArgsWrapper(course=course, name=row['name'], uri=row['uri'], dlflags=dlflags))
             print(f'Completed: {row["name"]}: {row["uri"]}')
         except Exception as e:
             print(f'Failed: {row["name"]}: {row["uri"]}')
