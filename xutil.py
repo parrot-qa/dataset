@@ -13,7 +13,8 @@ def validate_qa(p):
 
 
 def validate_doc(d):
-    pass
+    if not d.get('title', ''):
+        raise RuntimeError('Document title is empty or missing.')
 
 
 def collate_document(doc, skip=['code']):
@@ -33,6 +34,7 @@ def collate_course(meta):
         try:
             with open(ffile) as fp:
                 for pair in json.load(fp):
+                    validate_qa(pair)
                     pair['course'] = course
                     qa_pairs.append(pair)
         except Exception as e:
@@ -45,6 +47,7 @@ def collate_course(meta):
         try:
             with open(mfile) as fp:
                 for doc in json.load(fp):
+                    validate_doc(doc)
                     title, text = collate_document(doc)
                     documents.append({
                         'course': course,
