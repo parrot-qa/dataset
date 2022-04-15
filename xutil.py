@@ -9,7 +9,9 @@ from common import DATA_DIR, read_spec, validate_spec
 
 
 def validate_qa(p):
-    pass
+    ans = p.get('student_answer', '') + p.get('instructor_answer', '')
+    if not ans:
+        raise RuntimeError('Both student and instructor answers are empty/missing.')
 
 
 def validate_doc(d):
