@@ -11,7 +11,7 @@ from common import DATA_DIR, read_spec, validate_spec
 def validate_qa(p):
     ans = p.get('student_answer', '') + p.get('instructor_answer', '')
     if not ans:
-        raise RuntimeError('Both student and instructor answers are empty/missing.')
+        raise RuntimeError(f'Both student and instructor answers are empty/missing for ID {p["id"]}.')
 
 
 def validate_doc(d):
