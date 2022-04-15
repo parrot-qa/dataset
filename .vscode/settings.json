@@ -1,5 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
     "python.formatting.provider": "autopep8"
 }

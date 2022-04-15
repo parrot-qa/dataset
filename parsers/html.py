@@ -43,7 +43,7 @@ def _flatten_table(root):
     return text
 
 
-def categorize_documents(content, prefix=None, max_depth=6):
+def add_titles(content, prefix=None, max_depth=6):
     """Convert a flat list of headers and paragraphs into titled documents."""
 
     docs = []
@@ -68,7 +68,7 @@ def categorize_documents(content, prefix=None, max_depth=6):
     return docs
 
 
-def format_documents(sections):
+def group_sections(sections):
     parts = []
 
     last_title = None
@@ -116,8 +116,8 @@ def extract_text(path, *args, **kwargs) -> list[dict]:
             continue
         results.append((tag.name, text))
 
-    sections = categorize_documents(results, max_depth=2)
-    sections = format_documents(sections)
+    sections = add_titles(results, max_depth=2)
+    sections = group_sections(sections)
     return sections
 
 

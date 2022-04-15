@@ -24,10 +24,10 @@ def clean_paragraph(paragraph_text):
 def to_json(title, paragraph_text):
     # paragraph_text = pdf_extractor(os.path.join(pdf_folder, pdf_name))
     contents = [{'tag': 'plain', 'text': text} for text in paragraph_text]
-    pdf_json = {
+    pdf_json = [{
         "title": title,
         "contents": contents
-    }
+    }]
     return pdf_json
 
 

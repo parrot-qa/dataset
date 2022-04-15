@@ -40,7 +40,7 @@ def collate_course(meta):
                     pair['course'] = course
                     qa_pairs.append(pair)
         except Exception as e:
-            print(f'Skipping forum due to error: {course} {fname}')
+            print(f'Aborting forum due to error: {course} {fname}')
             print(' >', e)
 
     documents = []
@@ -57,7 +57,7 @@ def collate_course(meta):
                         'content': text
                     })
         except Exception as e:
-            print(f'Skipping document due to error: {course} {mname}')
+            print(f'Aborting document due to error: {course} {mname}')
             print(' >', e)
 
     return qa_pairs, documents
@@ -87,6 +87,13 @@ def export_dataset(args):
         q, d = collate_course(row)
         qa_pairs.extend(q)
         documents.extend(d)
+
+    if len(qa_pairs) == 0:
+        print('Could not generate dataset, due to empty/invalid QA pairs.')
+        return
+    if len(documents) == 0:
+        print('Could not generate dataset, due to empty/invalid documents.')
+        return
 
     db_file = os.path.join(DATA_DIR, 'parrot-qa.json')
     with open(db_file, 'w') as fp:
