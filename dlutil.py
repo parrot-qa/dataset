@@ -3,19 +3,9 @@ import re
 import json
 
 import requests
-import pandas as pd
 
-from adapter import gdrive, piazza
-
-
-DATA_DIR = '.cache'
-
-
-def _setup_dir(collection, course):
-    path = os.path.join(DATA_DIR, collection, course)
-    if not os.path.isdir(path):
-        os.makedirs(path)
-    return path
+from common import setup_dir, read_spec, validate_spec, ArgsWrapper
+from adapters import gdrive, piazza
 
 
 def get_material(args):
@@ -44,51 +34,48 @@ def get_material(args):
 
 
 def download_material(args):
-    outdir = _setup_dir('materials', args.course)
+    outdir = setup_dir('materials', args.course)
     text, extn = get_material(args)
     with open(os.path.join(outdir, args.name + extn), 'wb') as fp:
         fp.write(text)
 
 
 def get_forum(args):
-    handle = piazza.login()
-    posts = piazza.download_posts(handle, args.class_id)
-    return posts
+    if m := re.match(r'https://piazza\.com/class/(\w+)$', args.uri, re.IGNORECASE):
+        class_id = m.group(1)
+        handle = piazza.login()
+        posts = piazza.download_posts(handle, class_id)
+        return posts
+    else:
+        raise RuntimeError('Unknown URI type, only Piazza links are supported currently.')
 
 
 def download_forum(args):
-    outdir = _setup_dir('forums', args.course)
+    outdir = setup_dir('forums', args.course)
     posts = get_forum(args)
     with open(os.path.join(outdir, args.name + '.json'), 'w') as fp:
-        json.dump(posts, fp)
+        json.dump(posts, fp, indent=4)
 
 
 def download_bulk(args):
-    class ArgsWrapper:
-        def __init__(self, **kwargs):
-            for k, v in kwargs.items():
-                setattr(self, k, v)
+    course, collection, df = read_spec(args.spec_file)
+    if collection == 'materials':
+        download_fn = download_material
+    elif collection == 'forums':
+        download_fn = download_forum
+    else:
+        raise RuntimeError('Unknown collection, should be one of: materials, forums')
 
-    course = os.path.basename(args.spec_file).split('.')[0]
-    df = pd.read_csv(args.spec_file)
-    dup_uri = df.duplicated('uri', keep=False)
-    dup_name = df.duplicated('name', keep=False)
-    dup_df = df[dup_uri | dup_name]
-    if len(dup_df) > 0:
-        print('Duplicate entries! Please fix and try again:')
-        print(dup_df)
+    if validate_spec(df) == False:
         return
 
-    if args.to == 'local':
-        for _, row in df.iterrows():
-            try:
-                download_material(ArgsWrapper(course=course, name=row['name'], uri=row['uri']))
-                print(f'Completed: {row["name"]}: {row["uri"]}')
-            except Exception as e:
-                print(f'Failed: {row["name"]}: {row["uri"]}')
-                print(f'>', e)
-    else:
-        raise NotImplementedError()
+    for _, row in df.iterrows():
+        try:
+            download_fn(ArgsWrapper(course=course, name=row['name'], uri=row['uri']))
+            print(f'Completed: {row["name"]}: {row["uri"]}')
+        except Exception as e:
+            print(f'Failed: {row["name"]}: {row["uri"]}')
+            print(f'>', e)
 
 
 if __name__ == '__main__':
@@ -106,12 +93,11 @@ if __name__ == '__main__':
     f_parser = subparsers.add_parser('forum')
     f_parser.add_argument('course', help='course to which the forum belongs')
     f_parser.add_argument('name', help='name of the document to save with')
-    f_parser.add_argument('class_id', help='class ID on Piazza')
+    f_parser.add_argument('uri', help='link to forums (Piazza class)')
     f_parser.set_defaults(func=download_forum)
 
     b_parser = subparsers.add_parser('bulk')
-    b_parser.add_argument('spec_file', help='file named <course>.csv, containing name and links')
-    b_parser.add_argument('--to', help='where to download the files', choices=['local', 'mongodb'], default='local')
+    b_parser.add_argument('spec_file', help='file named <course>.<collection>.csv, containing name, links, etc.')
     b_parser.set_defaults(func=download_bulk)
 
     args = parser.parse_args()
