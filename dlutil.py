@@ -9,7 +9,6 @@ from adapters import gdrive, piazza
 
 
 def get_material(args):
-    params = args.dlflags if hasattr(args, 'dlflags') else {}
     if match := re.match(r'https://docs.google.com/(\w+)/d/([-_a-z0-9]+)/', args.uri, re.IGNORECASE):
         file_type = match.group(1)
         if file_type == 'document':
@@ -19,9 +18,9 @@ def get_material(args):
             mime_type = 'application/pdf'
             extn = '.pdf'
         file_id = match.group(2)
-        text = gdrive.download(file_id, mime_type, **params)
+        text = gdrive.download(file_id, mime_type, **getattr(args, 'dlflags', {}))
     else:
-        resp = requests.get(args.uri, **params)
+        resp = requests.get(args.uri, **getattr(args, 'dlflags', {}))
         resp.raise_for_status()
         if 'text/html' in resp.headers['content-type']:
             extn = '.html'
@@ -45,8 +44,7 @@ def get_forum(args):
     if m := re.match(r'https://piazza\.com/class/(\w+)$', args.uri, re.IGNORECASE):
         class_id = m.group(1)
         handle = piazza.login()
-        params = args.dlflags if hasattr(args, 'dlflags') else {}
-        posts = piazza.download_posts(handle, class_id, **params)
+        posts = piazza.download_posts(handle, class_id, **getattr(args, 'dlflags', {}))
         return posts
     else:
         raise RuntimeError('Unknown URI type, only Piazza links are supported currently.')
