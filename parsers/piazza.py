@@ -1,25 +1,27 @@
-#for post in formatted_QA_cs61b:
-#     student_answer = post.get("student_answer")
-#     instructor_answer = post.get("instructor_answer")
-#     if "@" in student_answer: 
-#         index = student_answer.index("@")
-#         if student_answer[index+1].isnumeric():
-#             link_val = re.search('@\d*', student_answer)[0]
-#             for post_sub in formatted_QA_cs61b:
-#                 if post_sub.get("tag_num") == int(link_val[1:]):
-#                     if post_sub.get("student_answer") != "":
-#                         post["student_answer"] = post_sub.get("student_answer")
-#     if "@" in instructor_answer: 
-#         index = instructor_answer.index("@")
-#         if instructor_answer[index+1].isnumeric():
-#             link_val = re.search('@\d*', instructor_answer)[0]
-#             for post_sub in formatted_QA_cs61b:
-#                 if post_sub.get("tag_num") == int(link_val[1:]):
-#                     if post_sub.get("instuctor_answer") != "":
-#                         post["instructor_answer"] = post_sub.get("instuctor_answer")
-
 from .html import extract_text_basic
 import json
+
+def trace_back_check(formatted_QA):
+    for post in formatted_QA:
+        student_answer = post.get("student_answer")
+        instructor_answer = post.get("instructor_answer")
+        if "@" in student_answer: 
+            index = student_answer.index("@")
+            if student_answer[index+1].isnumeric():
+                link_val = re.search('@\d*', student_answer)[0]
+                for post_sub in formatted_QA:
+                    if post_sub.get("tag_num") == int(link_val[1:]):
+                        if post_sub.get("student_answer") != "":
+                            post["student_answer"] = post_sub.get("student_answer")
+        if "@" in instructor_answer: 
+            index = instructor_answer.index("@")
+            if instructor_answer[index+1].isnumeric():
+                link_val = re.search('@\d*', instructor_answer)[0]
+                for post_sub in formatted_QA:
+                    if post_sub.get("tag_num") == int(link_val[1:]):
+                        if post_sub.get("instuctor_answer") != "":
+                            post["instructor_answer"] = post_sub.get("instuctor_answer")
+     return formatted_QA
 
 
 def extract_question_posts(post_list):
@@ -67,8 +69,8 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
                      "instructor_answer": extract_text_basic(i_answer),
                      "folders": post.get("folders")}
         formatted_QA.append(post_dict)
-
-    return formatted_QA
+    final_QA = trace_back_check(formatted_QA)
+    return final_QA
 
 
 if __name__ == '__main__':
