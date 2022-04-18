@@ -15,8 +15,23 @@ def validate_qa(p):
 
 
 def validate_doc(d):
-    if not d.get('title', ''):
+    if not d.get('title', '').strip():
         raise RuntimeError('Document title is empty or missing.')
+
+
+def validate_set(qa, docs):
+    if len(qa) == 0:
+        raise RuntimeError('QA pairs are empty or invalid.')
+    if len(docs) == 0:
+        raise RuntimeError('Documents are empty or invalid.')
+
+    qa_ids = [q['id'] for q in qa]
+    if len(qa_ids) != len(set(qa_ids)):
+        raise RuntimeError('Duplicate ID in QA pairs. Check raw data!')
+
+    docs = [d['title'] for d in docs]
+    if len(docs) != len(set(docs)):
+        raise RuntimeError('Duplicate title in documents. Check parsers!')
 
 
 def collate_document(doc, skip=['code']):
@@ -40,7 +55,7 @@ def collate_course(meta):
                     pair['course'] = course
                     qa_pairs.append(pair)
         except Exception as e:
-            print(f'Aborting forum due to error: {course} {fname}')
+            print(f'Aborting forum midway due to error: {course} {fname}')
             print(' >', e)
 
     documents = []
@@ -57,10 +72,23 @@ def collate_course(meta):
                         'content': text
                     })
         except Exception as e:
-            print(f'Aborting document due to error: {course} {mname}')
+            print(f'Aborting document midway due to error: {course} {mname}')
             print(' >', e)
 
     return qa_pairs, documents
+
+
+def display_stats(qa_pairs, documents):
+    qa_df = pd.DataFrame(qa_pairs)
+    doc_df = pd.DataFrame(documents)
+
+    qa_stat = qa_df.groupby('course').agg({'content': 'count'})
+    qa_stat.columns = ['count']
+    print('\nQA Statistics:\n', qa_stat)
+
+    doc_stat = doc_df.groupby('course').agg({'content': 'count'})
+    doc_stat.columns = ['count']
+    print('\nDocument Statistics:\n', doc_stat)
 
 
 def export_dataset(args):
@@ -84,16 +112,15 @@ def export_dataset(args):
     qa_pairs = []
     documents = []
     for _, row in meta_df.iterrows():
-        q, d = collate_course(row)
-        qa_pairs.extend(q)
-        documents.extend(d)
-
-    if len(qa_pairs) == 0:
-        print('Could not generate dataset, due to empty/invalid QA pairs.')
-        return
-    if len(documents) == 0:
-        print('Could not generate dataset, due to empty/invalid documents.')
-        return
+        qa, docs = collate_course(row)
+        try:
+            validate_set(qa, docs)
+        except Exception as e:
+            print(f'\nAborting dataset creation while parsing {row.name}!')
+            print(' >', e)
+            return
+        qa_pairs.extend(qa)
+        documents.extend(docs)
 
     db_file = os.path.join(DATA_DIR, 'parrot-qa.json')
     with open(db_file, 'w') as fp:
@@ -101,7 +128,8 @@ def export_dataset(args):
             'qa_pairs': qa_pairs,
             'documents': documents
         }, fp)
-        print(f'Generated dataset in: {db_file}')
+        print(f'\nGenerated dataset in: {db_file}')
+        display_stats(qa_pairs, documents)
 
 
 if __name__ == '__main__':
