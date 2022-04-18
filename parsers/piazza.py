@@ -1,5 +1,6 @@
 from .html import extract_text_basic
 import json
+import re
 
 def trace_back_check(formatted_QA):
     for post in formatted_QA:
@@ -27,7 +28,7 @@ def trace_back_check(formatted_QA):
 def extract_question_posts(post_list):
     questions = []
     for post in post_list:
-        if post.get("type") == "question":
+        if (post.get("type") == "question") and ("unanswered" not in post.get("tags")):
             questions.append(post)
     return questions
 
