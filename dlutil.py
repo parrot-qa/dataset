@@ -69,14 +69,18 @@ def download_bulk(args):
     if validate_spec(df) == False:
         return
 
+    suc = 0
     for _, row in df.iterrows():
         try:
             dlflags = json.loads(row['dlflags']) if 'dlflags' in row else {}
             download_fn(ArgsWrapper(course=course, name=row['name'], uri=row['uri'], dlflags=dlflags))
             print(f'Completed: {row["name"]}: {row["uri"]}')
+            suc += 1
         except Exception as e:
             print(f'Failed: {row["name"]}: {row["uri"]}')
             print(f'>', e)
+
+    print(f'\nCompleted {suc}/{len(df)} successfully.')
 
 
 if __name__ == '__main__':
