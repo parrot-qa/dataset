@@ -21,7 +21,7 @@ def trace_back_check(formatted_QA):
                     if post_sub.get("tag_num") == int(link_val[1:]):
                         if post_sub.get("instuctor_answer") != "":
                             post["instructor_answer"] = post_sub.get("instuctor_answer")
-     return formatted_QA
+    return formatted_QA
 
 
 def extract_question_posts(post_list):
