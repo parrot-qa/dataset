@@ -40,6 +40,8 @@ def download_posts(p, course_id, folders=[], limit=None):
 
     raw_posts = []
     for post in post_generator:
+        if len(raw_posts) and len(raw_posts) % 10 == 0:
+            print(f'Downloaded {len(raw_posts)} posts so far...')
         if limit and len(raw_posts) == limit:
             break
         else:
