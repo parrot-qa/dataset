@@ -1,3 +1,4 @@
+from os import link
 from .html import extract_text_basic
 import json
 import re
@@ -5,22 +6,29 @@ import re
 def get_question_tags(posts):
     question_numbers = []
     for post in posts:
-        question_numbers.append(int(post.get("nr")))
+        question_numbers.append(int(post.get("tag_num")))
     return question_numbers
 
 def trace_back_check(formatted_QA, rawQA):
-
+    question_tag_numbers = get_question_tags(formatted_QA)
     for post in formatted_QA:
-        student_answer = post.get("student_answer")
-        instructor_answer = post.get("instructor_answer")
+        student_answer = post.get("student_answer")         # the current post's student answer
+        instructor_answer = post.get("instructor_answer")   # the current post's instructor answer
         if "@" in student_answer: 
             index = student_answer.index("@")
             if student_answer[index+1].isnumeric():
-                link_val = re.search('@\d*', student_answer)[0]
-                for post_sub in formatted_QA:
-                    if post_sub.get("tag_num") == int(link_val[1:]):
-                        if post_sub.get("student_answer") != "":
-                            post["student_answer"] = post_sub.get("student_answer")
+                link_val = re.search('\@(\d*)', student_answer)[1]
+                if link_val in question_tag_numbers:
+                    for post_sub in formatted_QA:
+                        if post_sub.get("tag_num") == link_val:
+                            if post_sub.get("student_answer") != "":
+                                post["student_answer"] = post_sub.get("student_answer")
+                            else:
+                                post["student_answer"] = post_sub.get("instructor_answer")
+                else:
+                    for note in rawQA:
+                        if note.get("nr") == link_val:
+                            post["student_answer"] = note.get("children")[-1].get("history")[-1].get("content")
         if "@" in instructor_answer: 
             index = instructor_answer.index("@")
             if instructor_answer[index+1].isnumeric():
@@ -71,6 +79,7 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
     for post in answered_questions:
         i_answer, s_answer = get_answers(post)
         post_dict = {"id": post.get("id"),
+                     "tag_num": post.get("nr"),
                      "subject": get_subject(post),
                      "content": extract_text_basic(get_question_content(post)),
                      "student_answer": extract_text_basic(s_answer),
