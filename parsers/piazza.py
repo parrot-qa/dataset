@@ -10,6 +10,8 @@ def get_question_tags(posts):
     return question_numbers
 
 def trace_back_check(formatted_QA, rawQA):
+
+    to_remove = []
     question_tag_numbers = get_question_tags(formatted_QA)
     for post in formatted_QA:
         student_answer = post.get("student_answer")         # the current post's student answer
@@ -26,10 +28,7 @@ def trace_back_check(formatted_QA, rawQA):
                             else:
                                 post["student_answer"] = post_sub.get("instructor_answer") # if there isn't a student answer in the linked post, rewrite with the instructor answer
                 else: # IF the linked post is NOT a question
-                    for note in rawQA: # cycle through all non-formatted posts
-                        if (note.get("nr") == int(link_val)) & (note.get("type") == "note"): # if we find the linked non-formatted post
-                            if note.get("history_size") >= 1:
-                                post["student_answer"] = extract_text_basic(note.get("history")[0].get("content")) # make the student's answer the content of that note
+                    to_remove.append(post)
         
         
         if "@" in instructor_answer:                           # IF there is an @ symbol in the student's answer
@@ -44,10 +43,10 @@ def trace_back_check(formatted_QA, rawQA):
                             else:
                                 post["instructor_answer"] = post_sub.get("student_answer") # if there isn't a student answer in the linked post, rewrite with the instructor answer
                 else: # IF the linked post is NOT a question
-                    for note in rawQA: # cycle through all non-formatted posts
-                        if (note.get("nr") == int(link_val)) & (note.get("type") == "note"): # if we find the linked non-formatted post
-                            if note.get("history_size") >= 1:
-                                post["instructor_answer"] = extract_text_basic(note.get("history")[0].get("content")) # make the student's answer the content of that note
+                    to_remove.append(post)
+    for drop in to_remove:
+        if drop in formatted_QA:
+            formatted_QA.remove(drop)
     return formatted_QA
 
 
