@@ -5,7 +5,7 @@ import re
 def get_question_tags(posts):
     question_numbers = []
     for post in posts:
-        question_numbers.append(int(post.get("nr")))
+        question_numbers.append(int(post.get("tag_num")))
     return question_numbers
 
 def trace_back_check(formatted_QA, rawQA):
@@ -35,7 +35,7 @@ def trace_back_check(formatted_QA, rawQA):
 def extract_question_posts(post_list):
     questions = []
     for post in post_list:
-        if post.get("type") == "question":
+        if (post.get("type") == "question") and ("unanswered" not in post.get("tags")):
             questions.append(post)
     return questions
 
@@ -71,6 +71,7 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
     for post in answered_questions:
         i_answer, s_answer = get_answers(post)
         post_dict = {"id": post.get("id"),
+                     "tag_num": post.get("nr"),
                      "subject": get_subject(post),
                      "content": extract_text_basic(get_question_content(post)),
                      "student_answer": extract_text_basic(s_answer),
