@@ -43,7 +43,7 @@ def trace_back_check(formatted_QA, rawQA):
 def extract_question_posts(post_list):
     questions = []
     for post in post_list:
-        if post.get("type") == "question":
+        if (post.get("type") == "question") and ("unanswered" not in post.get("tags")):
             questions.append(post)
     return questions
 

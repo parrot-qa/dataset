@@ -5,10 +5,12 @@ To_the_Reader,https://www.textbook.ds100.org/preface.html
 Prerequisites,https://www.textbook.ds100.org/prereqs.html
 Notation,https://www.textbook.ds100.org/notation.html
 1__The_Data_Science_Lifecycle,https://www.textbook.ds100.org/ch/01/lifecycle_intro.html
-1_1__The_Students_of_Data_100,https://www.textbook.ds100.org/ch/01/lifecycle_students_1.html
-1_2__Exploratory_Data_Analysis,https://www.textbook.ds100.org/ch/01/lifecycle_students_2.html
-1_3__What_s_in_a_Name_,https://www.textbook.ds100.org/ch/01/lifecycle_students_3.html
-2__Data_Scope,https://www.textbook.ds100.org/ch/02/data_scope_intro.html
+1_1__Asking_a_Question,https://www.textbook.ds100.org/ch/01/lifecycle_question.html
+1_2__Obtaining_Data,https://www.textbook.ds100.org/ch/01/lifecycle_obtain.html
+1_3__Understanding_the_Data,https://www.textbook.ds100.org/ch/01/lifecycle_data.html
+1_4__Understanding_the_World,https://www.textbook.ds100.org/ch/01/lifecycle_world.html
+1_5__A_Map_for_this_Book,https://www.textbook.ds100.org/ch/01/lifecycle_map.html
+2__Questions_and_Data_Scope,https://www.textbook.ds100.org/ch/02/data_scope_intro.html
 2_1__Big_Data_and_New_Opportunities,https://www.textbook.ds100.org/ch/02/data_scope_big_data_hubris.html
 "2_2__Target_Population,_Access_Frame,_Sample",https://www.textbook.ds100.org/ch/02/data_scope_construct.html
 2_3__Instruments_and_Protocols,https://www.textbook.ds100.org/ch/02/data_scope_protocols.html
