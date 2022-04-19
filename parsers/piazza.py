@@ -2,26 +2,50 @@ from .html import extract_text_basic
 import json
 import re
 
-def trace_back_check(formatted_QA):
+def get_question_tags(posts):
+    question_numbers = []
+    for post in posts:
+        question_numbers.append(int(post.get("tag_num")))
+    return question_numbers
+
+def trace_back_check(formatted_QA, rawQA):
+
+    to_remove = []
+    question_tag_numbers = get_question_tags(formatted_QA)
     for post in formatted_QA:
-        student_answer = post.get("student_answer")
-        instructor_answer = post.get("instructor_answer")
-        if "@" in student_answer: 
+        student_answer = post.get("student_answer")         # the current post's student answer
+        instructor_answer = post.get("instructor_answer")   # the current post's instructor answer
+        if "@" in student_answer:                           # IF there is an @ symbol in the student's answer
             index = student_answer.index("@")
-            if student_answer[index+1].isnumeric():
-                link_val = re.search('@\d*', student_answer)[0]
-                for post_sub in formatted_QA:
-                    if post_sub.get("tag_num") == int(link_val[1:]):
-                        if post_sub.get("student_answer") != "":
-                            post["student_answer"] = post_sub.get("student_answer")
-        if "@" in instructor_answer: 
+            if student_answer[index+1].isnumeric():         # and the next index is a number
+                link_val = re.search('\@(\d*)', student_answer)[1]  # get the number next to the @ sign
+                if int(link_val) in question_tag_numbers:                # IF the number is the num_tag to a question
+                    for post_sub in formatted_QA:                   # LOOP through the formmatted posts
+                        if post_sub.get("tag_num") == int(link_val):     # IF we find the right post
+                            if post_sub.get("student_answer") != "":# and IF that linked post has a student answer
+                                post["student_answer"] = post_sub.get("student_answer") # over write the dataset with the linked answer
+                            else:
+                                post["student_answer"] = post_sub.get("instructor_answer") # if there isn't a student answer in the linked post, rewrite with the instructor answer
+                else: # IF the linked post is NOT a question
+                    to_remove.append(post)
+        
+        
+        if "@" in instructor_answer:                           # IF there is an @ symbol in the student's answer
             index = instructor_answer.index("@")
-            if instructor_answer[index+1].isnumeric():
-                link_val = re.search('@\d*', instructor_answer)[0]
-                for post_sub in formatted_QA:
-                    if post_sub.get("tag_num") == int(link_val[1:]):
-                        if post_sub.get("instuctor_answer") != "":
-                            post["instructor_answer"] = post_sub.get("instuctor_answer")
+            if instructor_answer[index+1].isnumeric():         # and the next index is a number
+                link_val = re.search('\@(\d*)', instructor_answer)[1]  # get the number next to the @ sign
+                if int(link_val) in question_tag_numbers:                # IF the number is the num_tag to a question
+                    for post_sub in formatted_QA:                   # LOOP through the formmatted posts
+                        if post_sub.get("tag_num") == int(link_val):     # IF we find the right post
+                            if post_sub.get("instructor_answer") != "":# and IF that linked post has a student answer
+                                post["instructor_answer"] = post_sub.get("instructor_answer") # over write the dataset with the linked answer
+                            else:
+                                post["instructor_answer"] = post_sub.get("student_answer") # if there isn't a student answer in the linked post, rewrite with the instructor answer
+                else: # IF the linked post is NOT a question
+                    to_remove.append(post)
+    for drop in to_remove:
+        if drop in formatted_QA:
+            formatted_QA.remove(drop)
     return formatted_QA
 
 
@@ -70,8 +94,11 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
                      "student_answer": extract_text_basic(s_answer),
                      "instructor_answer": extract_text_basic(i_answer),
                      "folders": post.get("folders")}
+        if (post_dict["student_answer"] + post_dict["instructor_answer"]) == "":
+            # Answer exists but is probably not text, so skip this post
+            continue
         formatted_QA.append(post_dict)
-    final_QA = trace_back_check(formatted_QA)
+    final_QA = trace_back_check(formatted_QA, raw_QA)
     return final_QA
 
 
