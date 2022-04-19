@@ -14,29 +14,40 @@ def trace_back_check(formatted_QA, rawQA):
     for post in formatted_QA:
         student_answer = post.get("student_answer")         # the current post's student answer
         instructor_answer = post.get("instructor_answer")   # the current post's instructor answer
-        if "@" in student_answer: 
+        if "@" in student_answer:                           # IF there is an @ symbol in the student's answer
             index = student_answer.index("@")
-            if student_answer[index+1].isnumeric():
-                link_val = re.search('\@(\d*)', student_answer)[1]
-                if link_val in question_tag_numbers:
-                    for post_sub in formatted_QA:
-                        if post_sub.get("tag_num") == link_val:
-                            if post_sub.get("student_answer") != "":
-                                post["student_answer"] = post_sub.get("student_answer")
+            if student_answer[index+1].isnumeric():         # and the next index is a number
+                link_val = re.search('\@(\d*)', student_answer)[1]  # get the number next to the @ sign
+                if int(link_val) in question_tag_numbers:                # IF the number is the num_tag to a question
+                    for post_sub in formatted_QA:                   # LOOP through the formmatted posts
+                        if post_sub.get("tag_num") == int(link_val):     # IF we find the right post
+                            if post_sub.get("student_answer") != "":# and IF that linked post has a student answer
+                                post["student_answer"] = post_sub.get("student_answer") # over write the dataset with the linked answer
                             else:
-                                post["student_answer"] = post_sub.get("instructor_answer")
-                else:
-                    for note in rawQA:
-                        if note.get("nr") == link_val:
-                            post["student_answer"] = note.get("children")[-1].get("history")[-1].get("content")
-        if "@" in instructor_answer: 
+                                post["student_answer"] = post_sub.get("instructor_answer") # if there isn't a student answer in the linked post, rewrite with the instructor answer
+                else: # IF the linked post is NOT a question
+                    for note in rawQA: # cycle through all non-formatted posts
+                        if (note.get("nr") == int(link_val)) & (note.get("type") == "note"): # if we find the linked non-formatted post
+                            if note.get("history_size") >= 1:
+                                post["student_answer"] = extract_text_basic(note.get("history")[0].get("content")) # make the student's answer the content of that note
+        
+        
+        if "@" in instructor_answer:                           # IF there is an @ symbol in the student's answer
             index = instructor_answer.index("@")
-            if instructor_answer[index+1].isnumeric():
-                link_val = re.search('@\d*', instructor_answer)[0]
-                for post_sub in formatted_QA:
-                    if post_sub.get("tag_num") == int(link_val[1:]):
-                        if post_sub.get("instuctor_answer") != "":
-                            post["instructor_answer"] = post_sub.get("instuctor_answer")
+            if instructor_answer[index+1].isnumeric():         # and the next index is a number
+                link_val = re.search('\@(\d*)', instructor_answer)[1]  # get the number next to the @ sign
+                if int(link_val) in question_tag_numbers:                # IF the number is the num_tag to a question
+                    for post_sub in formatted_QA:                   # LOOP through the formmatted posts
+                        if post_sub.get("tag_num") == int(link_val):     # IF we find the right post
+                            if post_sub.get("instructor_answer") != "":# and IF that linked post has a student answer
+                                post["instructor_answer"] = post_sub.get("instructor_answer") # over write the dataset with the linked answer
+                            else:
+                                post["instructor_answer"] = post_sub.get("student_answer") # if there isn't a student answer in the linked post, rewrite with the instructor answer
+                else: # IF the linked post is NOT a question
+                    for note in rawQA: # cycle through all non-formatted posts
+                        if (note.get("nr") == int(link_val)) & (note.get("type") == "note"): # if we find the linked non-formatted post
+                            if note.get("history_size") >= 1:
+                                post["instructor_answer"] = extract_text_basic(note.get("history")[0].get("content")) # make the student's answer the content of that note
     return formatted_QA
 
 
