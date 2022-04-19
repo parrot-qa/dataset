@@ -9,38 +9,27 @@ def get_question_tags(posts):
     return question_numbers
 
 def trace_back_check(formatted_QA, rawQA):
-    tag_num_questions_only = get_question_tags(formatted_QA)
-    formatted_QA_edits = formatted_QA
-    for post in formatted_QA_edits:
+
+    for post in formatted_QA:
         student_answer = post.get("student_answer")
         instructor_answer = post.get("instructor_answer")
         if "@" in student_answer: 
             index = student_answer.index("@")
             if student_answer[index+1].isnumeric():
-                link_val = int((re.search('@\d*', student_answer)[0])[1:])
-                if link_val in tag_num_questions_only: # if this current link is a link to a question....
-                    for post_sub in formatted_QA_edits:
-                        if post_sub.get("tag_num") == link_val:
-                            if post_sub.get("student_answer") != "":
-                                post["student_answer"] = post_sub.get("student_answer")
-                else:
-                    for note in rawQA:
-                        if note.get("nr") == link_val:
-                            post["student_answer"] = note.get("children")[-1].get("content")
+                link_val = re.search('@\d*', student_answer)[0]
+                for post_sub in formatted_QA:
+                    if post_sub.get("tag_num") == int(link_val[1:]):
+                        if post_sub.get("student_answer") != "":
+                            post["student_answer"] = post_sub.get("student_answer")
         if "@" in instructor_answer: 
             index = instructor_answer.index("@")
             if instructor_answer[index+1].isnumeric():
-                link_val = int((re.search('@\d*', instructor_answer)[0])[1:])
-                if link_val in tag_num_questions_only:
-                    for post_sub in formatted_QA_edits:
-                        if post_sub.get("tag_num") == link_val:
-                            if post_sub.get("instuctor_answer") != "":
-                                post["instructor_answer"] = post_sub.get("instuctor_answer")
-                else:
-                    for note in rawQA:
-                        if note.get("nr") == link_val:
-                            post["instructor_answer"] = note.get("children")[-1].get("content")
-    return formatted_QA_edits
+                link_val = re.search('@\d*', instructor_answer)[0]
+                for post_sub in formatted_QA:
+                    if post_sub.get("tag_num") == int(link_val[1:]):
+                        if post_sub.get("instuctor_answer") != "":
+                            post["instructor_answer"] = post_sub.get("instuctor_answer")
+    return formatted_QA
 
 
 def extract_question_posts(post_list):
@@ -82,7 +71,6 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
     for post in answered_questions:
         i_answer, s_answer = get_answers(post)
         post_dict = {"id": post.get("id"),
-                     "nr": post.get("nr"),
                      "subject": get_subject(post),
                      "content": extract_text_basic(get_question_content(post)),
                      "student_answer": extract_text_basic(s_answer),
