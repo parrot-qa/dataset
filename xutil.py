@@ -9,9 +9,12 @@ from common import DATA_DIR, read_spec, validate_spec
 
 
 def validate_qa(p):
-    ans = p.get('student_answer', '') + p.get('instructor_answer', '')
-    if not ans:
-        raise RuntimeError(f'Both student and instructor answers are empty/missing for ID {p["id"]}.')
+    stu_ans = p.get('student_answer')
+    ins_ans = p.get('instructor_answer')
+    if type(stu_ans) != str or type(ins_ans) != str:
+        raise RuntimeError(f'Post @{p["tag_num"]}: Student/instructor answers should be strings.')
+    if (stu_ans + ins_ans) == '':
+        raise RuntimeError(f'Post @{p["tag_num"]}: Both student and instructor answers are empty/missing')
 
 
 def validate_doc(d):
