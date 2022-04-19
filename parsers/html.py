@@ -9,14 +9,22 @@ VALID_TAGS = re.compile(r'^(?:h\d|p|span|ul|ol|pre|code|table)$')
 def _get_root(soup):
     """Find the "root" tag which has the main content."""
 
+    root = None
+
     if soup.main:
         root = soup.main
     elif soup.header:
         # Some documents don't specify main, so use the next sibling of header tag
         root = soup.header.next_sibling
-    else:
+    elif root := soup.find(attrs={'role': 'main'}):
         # Some documents seem to have a attribute "role" for the main content
-        root = soup.find(attrs={'role': 'main'})
+        pass
+    elif root := soup.find('div', attrs={'class': 'slides'}):
+        # Based on CS61A, slide materials
+        pass
+    elif root := soup.find('div', attrs={'class': 'inner-content'}):
+        # Based on CS61A, book materials
+        pass
 
     if root is None:
         raise RuntimeError('Cannot determine location of main content.')

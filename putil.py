@@ -58,13 +58,17 @@ def parse_bulk(args):
     if validate_spec(df) == False:
         return
 
+    suc = 0
     for _, row in df.iterrows():
         try:
             parse_fn(ArgsWrapper(course=course, name=row['name']))
             print(f'Completed: {row["name"]}')
+            suc += 1
         except Exception as e:
             print(f'Failed: {row["name"]}')
             print(f'>', e)
+
+    print(f'\nCompleted {suc}/{len(df)} successfully.')
 
 
 if __name__ == '__main__':
