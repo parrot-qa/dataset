@@ -1,4 +1,3 @@
-from os import link
 from .html import extract_text_basic
 import json
 import re
