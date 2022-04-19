@@ -64,6 +64,7 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
     for post in answered_questions:
         i_answer, s_answer = get_answers(post)
         post_dict = {"id": post.get("id"),
+                     "tag_num": post.get("nr"),
                      "subject": get_subject(post),
                      "content": extract_text_basic(get_question_content(post)),
                      "student_answer": extract_text_basic(s_answer),
