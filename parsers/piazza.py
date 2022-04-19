@@ -95,6 +95,9 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
                      "student_answer": extract_text_basic(s_answer),
                      "instructor_answer": extract_text_basic(i_answer),
                      "folders": post.get("folders")}
+        if (post_dict["student_answer"] + post_dict["instructor_answer"]) == "":
+            # Answer exists but is probably not text, so skip this post
+            continue
         formatted_QA.append(post_dict)
     final_QA = trace_back_check(formatted_QA, raw_QA)
     return final_QA
