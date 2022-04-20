@@ -25,6 +25,10 @@ def parse_material(args):
     else:
         raise RuntimeError('Multiple materials found, please remove duplicates.')
 
+    # Add meta data to spans
+    for span in spans:
+        span['material_type'] = extn
+
     with open(os.path.join(outdir, f'{args.name}.json'), 'w') as fp:
         json.dump(spans, fp, indent=4)
 

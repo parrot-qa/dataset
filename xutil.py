@@ -31,7 +31,7 @@ def validate_set(qa, docs):
     qa_df = pd.DataFrame.from_records(qa)
     dup_df = qa_df.loc[qa_df['id'].duplicated(keep=False)]
     if len(dup_df) > 0:
-        print(dup_df['id'])
+        print(dup_df[['id', 'tag_num']])
         raise RuntimeError('Duplicate ID in QA pairs. Check raw data!')
 
     doc_df = pd.DataFrame.from_records(docs)
@@ -75,8 +75,10 @@ def collate_course(meta):
                     title, text = collate_document(doc)
                     documents.append({
                         'course': course,
-                        'title': title,
-                        'content': text
+                        'article_title': title,
+                        'section_title': '',
+                        'passage_text': text,
+                        'source_type': doc['material_type']
                     })
         except Exception as e:
             print(f'Aborting document midway due to error: {course} {mname}')
@@ -93,7 +95,7 @@ def display_stats(qa_pairs, documents):
     qa_stat.columns = ['count']
     print('\nQA Statistics:\n', qa_stat)
 
-    doc_stat = doc_df.groupby('course').agg({'content': 'count'})
+    doc_stat = doc_df.groupby('course').agg({'passage_text': 'count'})
     doc_stat.columns = ['count']
     print('\nDocument Statistics:\n', doc_stat)
 
