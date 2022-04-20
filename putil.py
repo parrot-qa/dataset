@@ -2,6 +2,8 @@ import os
 import json
 import glob
 
+import pandas as pd
+
 from common import DATA_DIR, setup_dir, read_spec, validate_spec, ArgsWrapper
 from parsers import html, pdf, piazza
 
@@ -13,9 +15,9 @@ def parse_material(args):
     if len(infiles) == 1:
         extn = infiles[0].split('.')[-1]
         if extn == 'pdf':
-            spans = pdf.extract_text(infiles[0])
+            spans = pdf.extract_text(infiles[0], **getattr(args, 'pflags', {}))
         elif extn == 'html':
-            spans = html.extract_text(infiles[0])
+            spans = html.extract_text(infiles[0], **getattr(args, 'pflags', {}))
         else:
             raise ValueError(f'No parser available for material type "{extn}".')
     elif len(infiles) == 0:
@@ -34,7 +36,7 @@ def parse_forum(args):
     if len(infiles) == 1:
         extn = infiles[0].split('.')[-1]
         if extn == 'json':
-            pairs = piazza.extract_qa(infiles[0])
+            pairs = piazza.extract_qa(infiles[0], **getattr(args, 'pflags', {}))
         else:
             raise ValueError(f'No parser available for forum type "{extn}".')
     elif len(infiles) == 0:
@@ -61,7 +63,11 @@ def parse_bulk(args):
     suc = 0
     for _, row in df.iterrows():
         try:
-            parse_fn(ArgsWrapper(course=course, name=row['name']))
+            if 'pflags' in row and not pd.isnull(row['pflags']):
+                pflags = json.loads(row['pflags'])
+            else:
+                pflags = {}
+            parse_fn(ArgsWrapper(course=course, name=row['name'], pflags=pflags))
             print(f'Completed: {row["name"]}')
             suc += 1
         except Exception as e:

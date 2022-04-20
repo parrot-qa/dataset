@@ -98,7 +98,7 @@ def group_sections(sections):
     return parts
 
 
-def extract_text(path, *args, **kwargs) -> list[dict]:
+def extract_text(path, max_depth=2) -> list[dict]:
     """Take a file path as input, and return a list of text with headings."""
 
     with open(path, 'r', encoding='utf-8') as fp:
@@ -124,7 +124,7 @@ def extract_text(path, *args, **kwargs) -> list[dict]:
             continue
         results.append((tag.name, text))
 
-    sections = add_titles(results, max_depth=2)
+    sections = add_titles(results, max_depth=max_depth)
     sections = group_sections(sections)
     return sections
 

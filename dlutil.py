@@ -3,6 +3,7 @@ import re
 import json
 
 import requests
+import pandas as pd
 
 from common import setup_dir, read_spec, validate_spec, ArgsWrapper
 from adapters import gdrive, piazza
@@ -72,7 +73,10 @@ def download_bulk(args):
     suc = 0
     for _, row in df.iterrows():
         try:
-            dlflags = json.loads(row['dlflags']) if 'dlflags' in row else {}
+            if 'dlflags' in row and not pd.isnull(row['dlflags']):
+                dlflags = json.loads(row['dlflags'])
+            else:
+                dlflags = {}
             download_fn(ArgsWrapper(course=course, name=row['name'], uri=row['uri'], dlflags=dlflags))
             print(f'Completed: {row["name"]}: {row["uri"]}')
             suc += 1
