@@ -28,12 +28,16 @@ def validate_set(qa, docs):
     if len(docs) == 0:
         raise RuntimeError('Documents are empty or invalid.')
 
-    qa_ids = [q['id'] for q in qa]
-    if len(qa_ids) != len(set(qa_ids)):
+    qa_df = pd.DataFrame.from_records(qa)
+    dup_df = qa_df.loc[qa_df['id'].duplicated(keep=False)]
+    if len(dup_df) > 0:
+        print(dup_df['id'])
         raise RuntimeError('Duplicate ID in QA pairs. Check raw data!')
 
-    docs = [d['title'] for d in docs]
-    if len(docs) != len(set(docs)):
+    doc_df = pd.DataFrame.from_records(docs)
+    dup_df = doc_df.loc[doc_df['article_title'].duplicated(keep=False)]
+    if len(dup_df) > 0:
+        print(dup_df['article_title'])
         raise RuntimeError('Duplicate title in documents. Check parsers!')
 
 
