@@ -58,11 +58,13 @@ def display_stats(qa_pairs, documents):
 
     qa_stat = qa_df.groupby('course').agg({'content': 'count'})
     qa_stat.columns = ['count']
-    print('\nQA Statistics:\n', qa_stat)
 
     doc_stat = doc_df.groupby('course').agg({'passage_text': 'count'})
     doc_stat.columns = ['count']
-    print('\nDocument Statistics:\n', doc_stat)
+
+    stat = qa_stat.join(doc_stat, lsuffix='_qa', rsuffix='_doc', how='outer')
+    stat = stat.fillna(0).astype(int)
+    print('\n', stat)
 
 
 def export_dataset(args):
