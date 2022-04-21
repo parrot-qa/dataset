@@ -8,39 +8,6 @@ import pandas as pd
 from common import DATA_DIR, read_spec, validate_spec
 
 
-def validate_qa(p):
-    stu_ans = p.get('student_answer')
-    ins_ans = p.get('instructor_answer')
-    if type(stu_ans) != str or type(ins_ans) != str:
-        raise RuntimeError(f'Post @{p["tag_num"]}: Student/instructor answers should be strings.')
-    if (stu_ans + ins_ans) == '':
-        raise RuntimeError(f'Post @{p["tag_num"]}: Both student and instructor answers are empty/missing')
-
-
-def validate_doc(d):
-    if not d.get('title', '').strip():
-        raise RuntimeError('Document title is empty or missing.')
-
-
-def validate_set(qa, docs):
-    if len(qa) == 0:
-        raise RuntimeError('QA pairs are empty or invalid.')
-    if len(docs) == 0:
-        raise RuntimeError('Documents are empty or invalid.')
-
-    qa_df = pd.DataFrame.from_records(qa)
-    dup_df = qa_df.loc[qa_df['id'].duplicated(keep=False)]
-    if len(dup_df) > 0:
-        print(dup_df[['id', 'tag_num']])
-        raise RuntimeError('Duplicate ID in QA pairs. Check raw data!')
-
-    doc_df = pd.DataFrame.from_records(docs)
-    dup_df = doc_df.loc[doc_df['article_title'].duplicated(keep=False)]
-    if len(dup_df) > 0:
-        print(dup_df['article_title'])
-        raise RuntimeError('Duplicate title in documents. Check parsers!')
-
-
 def collate_document(doc, skip=['code']):
     """Collate a document JSON containing sections into a single string."""
     text = [sec['text'] for sec in doc['contents']
@@ -58,7 +25,6 @@ def collate_course(meta):
         try:
             with open(ffile) as fp:
                 for pair in json.load(fp):
-                    validate_qa(pair)
                     pair['course'] = course
                     qa_pairs.append(pair)
         except Exception as e:
@@ -71,7 +37,6 @@ def collate_course(meta):
         try:
             with open(mfile) as fp:
                 for doc in json.load(fp):
-                    validate_doc(doc)
                     title, text = collate_document(doc)
                     documents.append({
                         'course': course,
@@ -122,12 +87,6 @@ def export_dataset(args):
     documents = []
     for _, row in meta_df.iterrows():
         qa, docs = collate_course(row)
-        try:
-            validate_set(qa, docs)
-        except Exception as e:
-            print(f'\nAborting dataset creation while parsing {row.name}!')
-            print(' >', e)
-            return
         qa_pairs.extend(qa)
         documents.extend(docs)
 
