@@ -68,14 +68,14 @@ def _flatten_list(root):
         item.insert(0, f' {"•" * level} ')
 
     text = ''.join(root.strings)
-    text = re.sub('[\s\n]+', ' ', text)
+    text = re.sub(r'[\s\n]+', ' ', text)
     return text
 
 
 def _flatten_table(root):
     # TODO: Add markers to denote table rows/columns
     text = ''.join(root.strings)
-    text = re.sub('[\s\n]+', ' ', text)
+    text = re.sub(r'[\s\n]+', ' ', text)
     return text
 
 
@@ -155,13 +155,7 @@ def partition_docs(node, threshold=DOCUMENT_PARTITION_LENGTH, prefix=[]):
     return doc
 
 
-# TODO:
-# - Remove code blocks early on from parser. Post-removal leads to a sudden drop in document sizes.
-# - Verify that extra whitespace in all documents are removed. Otherwise header will be wrongly retained.
-# - Prune sections that are flagged as "only print"?
-# - Test for PPTs, and books which gave errors or very short documents earlier.
-
-def extract_text(path, threshold=DOCUMENT_PARTITION_LENGTH) -> list[dict]:
+def extract_text(path, **partition_args) -> list[dict]:
     """Take a file path as input, and return a list of text with headings."""
 
     with open(path, 'r', encoding='utf-8') as fp:
@@ -181,15 +175,17 @@ def extract_text(path, threshold=DOCUMENT_PARTITION_LENGTH) -> list[dict]:
             text = _flatten_list(tag)
         elif tag.name == 'table':
             text = _flatten_table(tag)
-        else:
-            # TODO: Review this, if it creates white space?
+        elif tag.name in {'pre', 'code'}:
             text = ''.join(tag.strings)
+        else:
+            text = ''.join(tag.strings)
+            text = re.sub(r'[\s\n]+', ' ', text)
         if not text:
             continue
         results.append((tag.name, text))
 
     doctree = embed_hierarchy(results)
-    sections = partition_docs(doctree, threshold=threshold)
+    sections = partition_docs(doctree, **partition_args)
     return sections
 
 
@@ -219,7 +215,7 @@ if __name__ == '__main__':
             <p>15 points.</p>
             </main>
         """)
-    sections = extract_text('playground.html')
+    sections = extract_text('playground.html', threshold=100)
     assert type(sections) == list
 
     text = extract_text_basic('<p>\nHello!\n<b> How are you doing? </b>\n</p>')

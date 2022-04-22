@@ -1,155 +1,155 @@
-name,uri
+name,uri,pflags
 Grading_Policy,https://ds100.org/sp19/grading
-Intro,http://www.textbook.ds100.org/intro.html
-To_the_Reader,https://www.textbook.ds100.org/preface.html
-Prerequisites,https://www.textbook.ds100.org/prereqs.html
-Notation,https://www.textbook.ds100.org/notation.html
-1__The_Data_Science_Lifecycle,https://www.textbook.ds100.org/ch/01/lifecycle_intro.html
-1_1__Asking_a_Question,https://www.textbook.ds100.org/ch/01/lifecycle_question.html
-1_2__Obtaining_Data,https://www.textbook.ds100.org/ch/01/lifecycle_obtain.html
-1_3__Understanding_the_Data,https://www.textbook.ds100.org/ch/01/lifecycle_data.html
-1_4__Understanding_the_World,https://www.textbook.ds100.org/ch/01/lifecycle_world.html
-1_5__A_Map_for_this_Book,https://www.textbook.ds100.org/ch/01/lifecycle_map.html
-2__Questions_and_Data_Scope,https://www.textbook.ds100.org/ch/02/data_scope_intro.html
-2_1__Big_Data_and_New_Opportunities,https://www.textbook.ds100.org/ch/02/data_scope_big_data_hubris.html
-"2_2__Target_Population,_Access_Frame,_Sample",https://www.textbook.ds100.org/ch/02/data_scope_construct.html
-2_3__Instruments_and_Protocols,https://www.textbook.ds100.org/ch/02/data_scope_protocols.html
-2_4__Measuring_Natural_Phenomenon,https://www.textbook.ds100.org/ch/02/data_scope_natural.html
-2_5__Accuracy,https://www.textbook.ds100.org/ch/02/data_scope_accuracy.html
-2_6__Summary,https://www.textbook.ds100.org/ch/02/data_scope_summary.html
-2_7__Exercises,https://www.textbook.ds100.org/ch/02/data_scope_exercises.html
-3__Simulation_and_Data_Design,https://www.textbook.ds100.org/ch/03/theory_intro.html
-3_1__The_Urn_Model,https://www.textbook.ds100.org/ch/03/theory_urn.html
-"3_2__Simulating_Election_Polls__Bias,_Variance,_and_Big_Data",https://www.textbook.ds100.org/ch/03/theory_election.html
-3_3__Simulating_a_Randomized_Trial__Vaccine_Efficacy,https://www.textbook.ds100.org/ch/03/theory_vaccine_efficacy.html
-3_4__Measurement_Error__Air_Quality_Variation,https://www.textbook.ds100.org/ch/03/theory_measurement_error.html
-3_5__Summary,https://www.textbook.ds100.org/ch/03/theory_summary.html
-3_6__Exercises,https://www.textbook.ds100.org/ch/03/theory_exercises.html
-4__Modeling_and_Summary_Statistics,https://www.textbook.ds100.org/ch/04/modeling_intro.html
-4_1__The_Constant_Model,https://www.textbook.ds100.org/ch/04/modeling_simple.html
-4_2__Loss_Functions,https://www.textbook.ds100.org/ch/04/modeling_loss_functions.html
-4_3__Summary,https://www.textbook.ds100.org/ch/04/modeling_summary.html
-4_4__Exercises,https://www.textbook.ds100.org/ch/04/modeling_exercises.html
-5__[In_progress]_Case_Study,https://www.textbook.ds100.org/ch/05/cycle_case_study_intro.html
-6__Working_With_Dataframes_Using_pandas,https://www.textbook.ds100.org/ch/06/pandas_intro.html
-6_1__Subsetting,https://www.textbook.ds100.org/ch/06/pandas_subsetting.html
-6_2__Aggregating,https://www.textbook.ds100.org/ch/06/pandas_aggregating.html
-6_3__Joining,https://www.textbook.ds100.org/ch/06/pandas_joining.html
-6_4__Transforming,https://www.textbook.ds100.org/ch/06/pandas_transforming.html
-6_5__How_are_Dataframes_Different_from_Other_Data_Representations_,https://www.textbook.ds100.org/ch/06/pandas_other_reps.html
-6_6__Conclusion,https://www.textbook.ds100.org/ch/06/pandas_conclusion.html
-6_7__Exercises,https://www.textbook.ds100.org/ch/06/pandas_exercises.html
-7__Working_With_Relations_Using_SQL,https://www.textbook.ds100.org/ch/07/sql_intro.html
-7_1__Subsetting,https://www.textbook.ds100.org/ch/07/sql_subsetting.html
-7_2__Aggregating,https://www.textbook.ds100.org/ch/07/sql_aggregating.html
-7_3__Joining,https://www.textbook.ds100.org/ch/07/sql_joining.html
-7_4__Transforming,https://www.textbook.ds100.org/ch/07/sql_transforming.html
-7_5__How_are_Relations_Different_from_Other_Data_Representations_,https://www.textbook.ds100.org/ch/07/sql_other_reps.html
-7_6__Conclusion,https://www.textbook.ds100.org/ch/07/sql_conclusion.html
-7_7__Exercises,https://www.textbook.ds100.org/ch/07/sql_exercises.html
-8__Wrangling_Files,https://www.textbook.ds100.org/ch/08/files_intro.html
-8_1__Data_Source_Examples,https://www.textbook.ds100.org/ch/08/files_datasets.html
-8_2__File_Formats,https://www.textbook.ds100.org/ch/08/files_formats.html
-8_3__File_Size,https://www.textbook.ds100.org/ch/08/files_size.html
-8_4__The_Shell_and_Command_Line_Tools,https://www.textbook.ds100.org/ch/08/files_command_line.html
-8_5__Table_Shape_and_Granularity,https://www.textbook.ds100.org/ch/08/files_granularity.html
-8_6__Summary,https://www.textbook.ds100.org/ch/08/files_summary.html
-9__Wrangling_Dataframes,https://www.textbook.ds100.org/ch/09/wrangling_intro.html
-9_1__Example__Wrangling_CO2_Measurements_from_Mauna_Loa_Observatory,https://www.textbook.ds100.org/ch/09/wrangling_co2.html
-9_2__Quality_Checks,https://www.textbook.ds100.org/ch/09/wrangling_checks.html
-9_3__Missing_Values_and_Records,https://www.textbook.ds100.org/ch/09/wrangling_missing.html
-9_4__Transformations_and_Timestamps,https://www.textbook.ds100.org/ch/09/wrangling_transformations.html
-9_5__Modifying_Structure,https://www.textbook.ds100.org/ch/09/wrangling_structure.html
-9_6__Example__Wrangling_Restaurant_Safety_Violations,https://www.textbook.ds100.org/ch/09/wrangling_restaurants.html
-9_7__Summary,https://www.textbook.ds100.org/ch/09/wrangling_summary.html
-10__Exploratory_Data_Analysis,https://www.textbook.ds100.org/ch/10/eda_intro.html
-10_1__Feature_Types,https://www.textbook.ds100.org/ch/10/eda_feature_types.html
-10_2__What_to_Look_For_in_a_Distribution,https://www.textbook.ds100.org/ch/10/eda_distributions.html
-10_3__What_to_Look_For_in_a_Relationship_,https://www.textbook.ds100.org/ch/10/eda_relationships.html
-10_4__Guidelines_for_Exploration,https://www.textbook.ds100.org/ch/10/eda_guidelines.html
-10_5__Example__Sale_Prices_for_Houses,https://www.textbook.ds100.org/ch/10/eda_example.html
-10_6__Summary,https://www.textbook.ds100.org/ch/10/eda_summary.html
-11__Data_Visualization,https://www.textbook.ds100.org/ch/11/viz_intro.html
-11_1__Choosing_Scale_to_Reveal_Structure,https://www.textbook.ds100.org/ch/11/viz_scale.html
-11_2__Smoothing_and_Aggregating_Data,https://www.textbook.ds100.org/ch/11/viz_smoothing.html
-11_3__Facilitating_Meaningful_Comparisons,https://www.textbook.ds100.org/ch/11/viz_comparisons.html
-11_4__Incorporating_the_Data_Design,https://www.textbook.ds100.org/ch/11/viz_data_design.html
-11_5__Adding_Context,https://www.textbook.ds100.org/ch/11/viz_context.html
-11_7__Other_Tools_for_Visualization,https://www.textbook.ds100.org/ch/11/viz_other_tools.html
-11_8__Summary,https://www.textbook.ds100.org/ch/11/viz_summary.html
-12__Case_Study__Data_Science_for_Accurate_and_Timely_Air_Quality_Measurements,https://www.textbook.ds100.org/ch/12/pa_intro.html
-12_1__Finding_Collocated_Sensors,https://www.textbook.ds100.org/ch/12/pa_collocated.html
-12_2__Exploring_and_Cleaning_AQS_Sensor_Data,https://www.textbook.ds100.org/ch/12/pa_cleaning_aqs.html
-12_3__Exploring_and_Cleaning_PurpleAir_Sensor_Data,https://www.textbook.ds100.org/ch/12/pa_cleaning_purpleair.html
-12_4__Creating_a_Model_to_Correct_PurpleAir_Measurements,https://www.textbook.ds100.org/ch/12/pa_modeling.html
-12_5__In_Conclusion,https://www.textbook.ds100.org/ch/12/pa_conclusion.html
-12_6__Exercises,https://www.textbook.ds100.org/ch/12/pa_exercises.html
-13__Working_with_Text,https://www.textbook.ds100.org/ch/13/text_intro.html
-13_1__Python_String_Methods,https://www.textbook.ds100.org/ch/13/text_strings.html
-13_2__Regular_Expressions,https://www.textbook.ds100.org/ch/13/text_regex.html
-13_3__Regex_and_Python,https://www.textbook.ds100.org/ch/13/text_re.html
-14__Web_Technologies,https://www.textbook.ds100.org/ch/14/web_intro.html
-14_1__HTTP,https://www.textbook.ds100.org/ch/14/web_http.html
-14_2__[In_Progress]_REST,https://www.textbook.ds100.org/ch/14/web_rest.html
-14_3__[In_Progress]_XPath_and_HTML,https://www.textbook.ds100.org/ch/14/web_html.html
-15__Linear_Models,https://www.textbook.ds100.org/ch/15/linear_models.html
-15_1__Predicting_Tip_Amounts,https://www.textbook.ds100.org/ch/15/linear_tips.html
-15_2__[In_progress]_Fitting_a_linear_model,https://www.textbook.ds100.org/ch/15/linear_fitting.html
-15_3__[In_progress]_Inference_for_Linear_Regression,https://www.textbook.ds100.org/ch/15/linear_inference.html
-15_4__Least_Squares_—_A_Geometric_Perspective,https://www.textbook.ds100.org/ch/15/linear_projection.html
-16__Probability_and_Generalization,https://www.textbook.ds100.org/ch/16/prob_and_gen.html
-16_1__Random_Variables,https://www.textbook.ds100.org/ch/16/prob_random_vars.html
-16_2__Expectation_and_Variance,https://www.textbook.ds100.org/ch/16/prob_exp_var.html
-16_3__Risk,https://www.textbook.ds100.org/ch/16/prob_risk.html
-17__Gradient_Descent_and_Numerical_Optimization,https://www.textbook.ds100.org/ch/17/gradient_descent.html
-17_1__Loss_Minimization_Using_a_Program,https://www.textbook.ds100.org/ch/17/gradient_basics.html
-17_2__Gradient_Descent,https://www.textbook.ds100.org/ch/17/gradient_descent_define.html
-17_3__Convexity,https://www.textbook.ds100.org/ch/17/gradient_convexity.html
-17_4__Stochastic_Gradient_Descent,https://www.textbook.ds100.org/ch/17/gradient_stochastic.html
-17_5__Fitting_a_Linear_Model_Using_Gradient_Descent,https://www.textbook.ds100.org/ch/17/gradient_lin_reg.html
-18__[In_progress]_Case_Study__Donkey_Dimensions,https://www.textbook.ds100.org/ch/18/donkey_intro.html
-18_1__Linear_Regression_Case_Study,https://www.textbook.ds100.org/ch/18/donkey_analysis.html
-19__[In_progress]_Multiple_Linear_Regression,https://www.textbook.ds100.org/ch/19/mult_intro.html
-19_1__Multiple_Linear_Regression,https://www.textbook.ds100.org/ch/19/mult_model.html
-19_2__Inference_for_Multiple_Linear_Regression,https://www.textbook.ds100.org/ch/19/mult_inference.html
-20__Feature_Engineering,https://www.textbook.ds100.org/ch/20/feature_engineering.html
-20_1__The_Walmart_dataset,https://www.textbook.ds100.org/ch/20/feature_one_hot.html
-20_2__Predicting_Ice_Cream_Ratings,https://www.textbook.ds100.org/ch/20/feature_polynomial.html
-21__The_Bias-Variance_Tradeoff,https://www.textbook.ds100.org/ch/21/bias_intro.html
-21_1__Risk_and_Loss_Minimization,https://www.textbook.ds100.org/ch/21/bias_risk.html
-21_2__Model_Bias_and_Variance,https://www.textbook.ds100.org/ch/21/bias_modeling.html
-21_3__Cross-Validation,https://www.textbook.ds100.org/ch/21/bias_cv.html
-22__Regularization,https://www.textbook.ds100.org/ch/22/reg_intro.html
-22_1__Regularization_Intuition,https://www.textbook.ds100.org/ch/22/reg_intuition.html
-22_2__L2_Regularization__Ridge_Regression,https://www.textbook.ds100.org/ch/22/reg_ridge.html
-22_3__L1_Regularization__Lasso_Regression,https://www.textbook.ds100.org/ch/22/reg_lasso.html
-23__[In_progress]_Case_Study__Multiple_Linear_Models,https://www.textbook.ds100.org/ch/23/mult_case_intro.html
-24__Classification,https://www.textbook.ds100.org/ch/24/classification_intro.html
-24_1__Regression_on_Probabilities,https://www.textbook.ds100.org/ch/24/classification_prob.html
-24_2__The_Logistic_Model,https://www.textbook.ds100.org/ch/24/classification_log_model.html
-24_3__A_Loss_Function_for_the_Logistic_Model,https://www.textbook.ds100.org/ch/24/classification_cost.html
-24_4__Using_Logistic_Regression,https://www.textbook.ds100.org/ch/24/classification_log_reg.html
-24_5__Approximating_the_Empirical_Probability_Distribution,https://www.textbook.ds100.org/ch/24/classification_cost_justification.html
-24_6__Fitting_a_Logistic_Model,https://www.textbook.ds100.org/ch/24/classification_sgd.html
-24_7__Evaluating_Logistic_Models,https://www.textbook.ds100.org/ch/24/classification_sensitivity_specificity.html
-24_8__Multiclass_Classification,https://www.textbook.ds100.org/ch/24/classification_multiclass.html
-25__[In_progress]_Replicable_Research,https://www.textbook.ds100.org/ch/25/repl_intro.html
-25_1__P-hacking,https://www.textbook.ds100.org/ch/25/repl_phacking.html
-26__Dimensionality_Reduction_and_PCA,https://www.textbook.ds100.org/ch/26/pca_intro.html
-26_1__Dimensions_of_a_Data_Table,https://www.textbook.ds100.org/ch/26/pca_dims.html
-26_2__PCA_using_the_Singular_Value_Decomposition,https://www.textbook.ds100.org/ch/26/pca_svd.html
-26_3__PCA_in_Practice,https://www.textbook.ds100.org/ch/26/pca_in_practice.html
-27__[In_progress]_Decision_Trees_and_Random_Forests,https://www.textbook.ds100.org/ch/27/dtrees_intro.html
-28__[In_progress]_Clustering,https://www.textbook.ds100.org/ch/28/clustering_intro.html
-Probability_Review,https://www.textbook.ds100.org/ch/a01/prob_review.html
-Vector_Space_Review,https://www.textbook.ds100.org/ch/a02/vector_space_review.html
-Statistical_Inference_Review,https://www.textbook.ds100.org/ch/a03/hyp_intro.html
-Hypothesis_Testing_and_Confidence_Intervals,https://www.textbook.ds100.org/ch/a03/hyp_introduction.html
-Permutation_Test,https://www.textbook.ds100.org/ch/a03/hyp_introduction_part2.html
-Reference_Tables,https://www.textbook.ds100.org/ch/a04/ref_intro.html
-pandas,https://www.textbook.ds100.org/ch/a04/ref_pandas.html
-Seaborn,https://www.textbook.ds100.org/ch/a04/ref_seaborn.html
-matplotlib,https://www.textbook.ds100.org/ch/a04/ref_matplotlib.html
-scikit-learn,https://www.textbook.ds100.org/ch/a04/ref_sklearn.html
-Contributors,https://www.textbook.ds100.org/ch/a05/contributors.html
-References,https://www.textbook.ds100.org/references.html
+Intro,http://www.textbook.ds100.org/intro.html,"{""prefix"": [""intro""]}"
+To_the_Reader,https://www.textbook.ds100.org/preface.html,"{""prefix"": [""preface""]}"
+Prerequisites,https://www.textbook.ds100.org/prereqs.html,"{""prefix"": [""prereqs""]}"
+Notation,https://www.textbook.ds100.org/notation.html,"{""prefix"": [""notation""]}"
+1__The_Data_Science_Lifecycle,https://www.textbook.ds100.org/ch/01/lifecycle_intro.html,"{""prefix"": [""lifecycle_intro""]}"
+1_1__Asking_a_Question,https://www.textbook.ds100.org/ch/01/lifecycle_question.html,"{""prefix"": [""lifecycle_question""]}"
+1_2__Obtaining_Data,https://www.textbook.ds100.org/ch/01/lifecycle_obtain.html,"{""prefix"": [""lifecycle_obtain""]}"
+1_3__Understanding_the_Data,https://www.textbook.ds100.org/ch/01/lifecycle_data.html,"{""prefix"": [""lifecycle_data""]}"
+1_4__Understanding_the_World,https://www.textbook.ds100.org/ch/01/lifecycle_world.html,"{""prefix"": [""lifecycle_world""]}"
+1_5__A_Map_for_this_Book,https://www.textbook.ds100.org/ch/01/lifecycle_map.html,"{""prefix"": [""lifecycle_map""]}"
+2__Questions_and_Data_Scope,https://www.textbook.ds100.org/ch/02/data_scope_intro.html,"{""prefix"": [""data_scope_intro""]}"
+2_1__Big_Data_and_New_Opportunities,https://www.textbook.ds100.org/ch/02/data_scope_big_data_hubris.html,"{""prefix"": [""data_scope_big_data_hubris""]}"
+"2_2__Target_Population,_Access_Frame,_Sample",https://www.textbook.ds100.org/ch/02/data_scope_construct.html,"{""prefix"": [""data_scope_construct""]}"
+2_3__Instruments_and_Protocols,https://www.textbook.ds100.org/ch/02/data_scope_protocols.html,"{""prefix"": [""data_scope_protocols""]}"
+2_4__Measuring_Natural_Phenomenon,https://www.textbook.ds100.org/ch/02/data_scope_natural.html,"{""prefix"": [""data_scope_natural""]}"
+2_5__Accuracy,https://www.textbook.ds100.org/ch/02/data_scope_accuracy.html,"{""prefix"": [""data_scope_accuracy""]}"
+2_6__Summary,https://www.textbook.ds100.org/ch/02/data_scope_summary.html,"{""prefix"": [""data_scope_summary""]}"
+2_7__Exercises,https://www.textbook.ds100.org/ch/02/data_scope_exercises.html,"{""prefix"": [""data_scope_exercises""]}"
+3__Simulation_and_Data_Design,https://www.textbook.ds100.org/ch/03/theory_intro.html,"{""prefix"": [""theory_intro""]}"
+3_1__The_Urn_Model,https://www.textbook.ds100.org/ch/03/theory_urn.html,"{""prefix"": [""theory_urn""]}"
+"3_2__Simulating_Election_Polls__Bias,_Variance,_and_Big_Data",https://www.textbook.ds100.org/ch/03/theory_election.html,"{""prefix"": [""theory_election""]}"
+3_3__Simulating_a_Randomized_Trial__Vaccine_Efficacy,https://www.textbook.ds100.org/ch/03/theory_vaccine_efficacy.html,"{""prefix"": [""theory_vaccine_efficacy""]}"
+3_4__Measurement_Error__Air_Quality_Variation,https://www.textbook.ds100.org/ch/03/theory_measurement_error.html,"{""prefix"": [""theory_measurement_error""]}"
+3_5__Summary,https://www.textbook.ds100.org/ch/03/theory_summary.html,"{""prefix"": [""theory_summary""]}"
+3_6__Exercises,https://www.textbook.ds100.org/ch/03/theory_exercises.html,"{""prefix"": [""theory_exercises""]}"
+4__Modeling_and_Summary_Statistics,https://www.textbook.ds100.org/ch/04/modeling_intro.html,"{""prefix"": [""modeling_intro""]}"
+4_1__The_Constant_Model,https://www.textbook.ds100.org/ch/04/modeling_simple.html,"{""prefix"": [""modeling_simple""]}"
+4_2__Loss_Functions,https://www.textbook.ds100.org/ch/04/modeling_loss_functions.html,"{""prefix"": [""modeling_loss_functions""]}"
+4_3__Summary,https://www.textbook.ds100.org/ch/04/modeling_summary.html,"{""prefix"": [""modeling_summary""]}"
+4_4__Exercises,https://www.textbook.ds100.org/ch/04/modeling_exercises.html,"{""prefix"": [""modeling_exercises""]}"
+5__[In_progress]_Case_Study,https://www.textbook.ds100.org/ch/05/cycle_case_study_intro.html,"{""prefix"": [""cycle_case_study_intro""]}"
+6__Working_With_Dataframes_Using_pandas,https://www.textbook.ds100.org/ch/06/pandas_intro.html,"{""prefix"": [""pandas_intro""]}"
+6_1__Subsetting,https://www.textbook.ds100.org/ch/06/pandas_subsetting.html,"{""prefix"": [""pandas_subsetting""]}"
+6_2__Aggregating,https://www.textbook.ds100.org/ch/06/pandas_aggregating.html,"{""prefix"": [""pandas_aggregating""]}"
+6_3__Joining,https://www.textbook.ds100.org/ch/06/pandas_joining.html,"{""prefix"": [""pandas_joining""]}"
+6_4__Transforming,https://www.textbook.ds100.org/ch/06/pandas_transforming.html,"{""prefix"": [""pandas_transforming""]}"
+6_5__How_are_Dataframes_Different_from_Other_Data_Representations_,https://www.textbook.ds100.org/ch/06/pandas_other_reps.html,"{""prefix"": [""pandas_other_reps""]}"
+6_6__Conclusion,https://www.textbook.ds100.org/ch/06/pandas_conclusion.html,"{""prefix"": [""pandas_conclusion""]}"
+6_7__Exercises,https://www.textbook.ds100.org/ch/06/pandas_exercises.html,"{""prefix"": [""pandas_exercises""]}"
+7__Working_With_Relations_Using_SQL,https://www.textbook.ds100.org/ch/07/sql_intro.html,"{""prefix"": [""sql_intro""]}"
+7_1__Subsetting,https://www.textbook.ds100.org/ch/07/sql_subsetting.html,"{""prefix"": [""sql_subsetting""]}"
+7_2__Aggregating,https://www.textbook.ds100.org/ch/07/sql_aggregating.html,"{""prefix"": [""sql_aggregating""]}"
+7_3__Joining,https://www.textbook.ds100.org/ch/07/sql_joining.html,"{""prefix"": [""sql_joining""]}"
+7_4__Transforming,https://www.textbook.ds100.org/ch/07/sql_transforming.html,"{""prefix"": [""sql_transforming""]}"
+7_5__How_are_Relations_Different_from_Other_Data_Representations_,https://www.textbook.ds100.org/ch/07/sql_other_reps.html,"{""prefix"": [""sql_other_reps""]}"
+7_6__Conclusion,https://www.textbook.ds100.org/ch/07/sql_conclusion.html,"{""prefix"": [""sql_conclusion""]}"
+7_7__Exercises,https://www.textbook.ds100.org/ch/07/sql_exercises.html,"{""prefix"": [""sql_exercises""]}"
+8__Wrangling_Files,https://www.textbook.ds100.org/ch/08/files_intro.html,"{""prefix"": [""files_intro""]}"
+8_1__Data_Source_Examples,https://www.textbook.ds100.org/ch/08/files_datasets.html,"{""prefix"": [""files_datasets""]}"
+8_2__File_Formats,https://www.textbook.ds100.org/ch/08/files_formats.html,"{""prefix"": [""files_formats""]}"
+8_3__File_Size,https://www.textbook.ds100.org/ch/08/files_size.html,"{""prefix"": [""files_size""]}"
+8_4__The_Shell_and_Command_Line_Tools,https://www.textbook.ds100.org/ch/08/files_command_line.html,"{""prefix"": [""files_command_line""]}"
+8_5__Table_Shape_and_Granularity,https://www.textbook.ds100.org/ch/08/files_granularity.html,"{""prefix"": [""files_granularity""]}"
+8_6__Summary,https://www.textbook.ds100.org/ch/08/files_summary.html,"{""prefix"": [""files_summary""]}"
+9__Wrangling_Dataframes,https://www.textbook.ds100.org/ch/09/wrangling_intro.html,"{""prefix"": [""wrangling_intro""]}"
+9_1__Example__Wrangling_CO2_Measurements_from_Mauna_Loa_Observatory,https://www.textbook.ds100.org/ch/09/wrangling_co2.html,"{""prefix"": [""wrangling_co2""]}"
+9_2__Quality_Checks,https://www.textbook.ds100.org/ch/09/wrangling_checks.html,"{""prefix"": [""wrangling_checks""]}"
+9_3__Missing_Values_and_Records,https://www.textbook.ds100.org/ch/09/wrangling_missing.html,"{""prefix"": [""wrangling_missing""]}"
+9_4__Transformations_and_Timestamps,https://www.textbook.ds100.org/ch/09/wrangling_transformations.html,"{""prefix"": [""wrangling_transformations""]}"
+9_5__Modifying_Structure,https://www.textbook.ds100.org/ch/09/wrangling_structure.html,"{""prefix"": [""wrangling_structure""]}"
+9_6__Example__Wrangling_Restaurant_Safety_Violations,https://www.textbook.ds100.org/ch/09/wrangling_restaurants.html,"{""prefix"": [""wrangling_restaurants""]}"
+9_7__Summary,https://www.textbook.ds100.org/ch/09/wrangling_summary.html,"{""prefix"": [""wrangling_summary""]}"
+10__Exploratory_Data_Analysis,https://www.textbook.ds100.org/ch/10/eda_intro.html,"{""prefix"": [""eda_intro""]}"
+10_1__Feature_Types,https://www.textbook.ds100.org/ch/10/eda_feature_types.html,"{""prefix"": [""eda_feature_types""]}"
+10_2__What_to_Look_For_in_a_Distribution,https://www.textbook.ds100.org/ch/10/eda_distributions.html,"{""prefix"": [""eda_distributions""]}"
+10_3__What_to_Look_For_in_a_Relationship_,https://www.textbook.ds100.org/ch/10/eda_relationships.html,"{""prefix"": [""eda_relationships""]}"
+10_4__Guidelines_for_Exploration,https://www.textbook.ds100.org/ch/10/eda_guidelines.html,"{""prefix"": [""eda_guidelines""]}"
+10_5__Example__Sale_Prices_for_Houses,https://www.textbook.ds100.org/ch/10/eda_example.html,"{""prefix"": [""eda_example""]}"
+10_6__Summary,https://www.textbook.ds100.org/ch/10/eda_summary.html,"{""prefix"": [""eda_summary""]}"
+11__Data_Visualization,https://www.textbook.ds100.org/ch/11/viz_intro.html,"{""prefix"": [""viz_intro""]}"
+11_1__Choosing_Scale_to_Reveal_Structure,https://www.textbook.ds100.org/ch/11/viz_scale.html,"{""prefix"": [""viz_scale""]}"
+11_2__Smoothing_and_Aggregating_Data,https://www.textbook.ds100.org/ch/11/viz_smoothing.html,"{""prefix"": [""viz_smoothing""]}"
+11_3__Facilitating_Meaningful_Comparisons,https://www.textbook.ds100.org/ch/11/viz_comparisons.html,"{""prefix"": [""viz_comparisons""]}"
+11_4__Incorporating_the_Data_Design,https://www.textbook.ds100.org/ch/11/viz_data_design.html,"{""prefix"": [""viz_data_design""]}"
+11_5__Adding_Context,https://www.textbook.ds100.org/ch/11/viz_context.html,"{""prefix"": [""viz_context""]}"
+11_7__Other_Tools_for_Visualization,https://www.textbook.ds100.org/ch/11/viz_other_tools.html,"{""prefix"": [""viz_other_tools""]}"
+11_8__Summary,https://www.textbook.ds100.org/ch/11/viz_summary.html,"{""prefix"": [""viz_summary""]}"
+12__Case_Study__Data_Science_for_Accurate_and_Timely_Air_Quality_Measurements,https://www.textbook.ds100.org/ch/12/pa_intro.html,"{""prefix"": [""pa_intro""]}"
+12_1__Finding_Collocated_Sensors,https://www.textbook.ds100.org/ch/12/pa_collocated.html,"{""prefix"": [""pa_collocated""]}"
+12_2__Exploring_and_Cleaning_AQS_Sensor_Data,https://www.textbook.ds100.org/ch/12/pa_cleaning_aqs.html,"{""prefix"": [""pa_cleaning_aqs""]}"
+12_3__Exploring_and_Cleaning_PurpleAir_Sensor_Data,https://www.textbook.ds100.org/ch/12/pa_cleaning_purpleair.html,"{""prefix"": [""pa_cleaning_purpleair""]}"
+12_4__Creating_a_Model_to_Correct_PurpleAir_Measurements,https://www.textbook.ds100.org/ch/12/pa_modeling.html,"{""prefix"": [""pa_modeling""]}"
+12_5__In_Conclusion,https://www.textbook.ds100.org/ch/12/pa_conclusion.html,"{""prefix"": [""pa_conclusion""]}"
+12_6__Exercises,https://www.textbook.ds100.org/ch/12/pa_exercises.html,"{""prefix"": [""pa_exercises""]}"
+13__Working_with_Text,https://www.textbook.ds100.org/ch/13/text_intro.html,"{""prefix"": [""text_intro""]}"
+13_1__Python_String_Methods,https://www.textbook.ds100.org/ch/13/text_strings.html,"{""prefix"": [""text_strings""]}"
+13_2__Regular_Expressions,https://www.textbook.ds100.org/ch/13/text_regex.html,"{""prefix"": [""text_regex""]}"
+13_3__Regex_and_Python,https://www.textbook.ds100.org/ch/13/text_re.html,"{""prefix"": [""text_re""]}"
+14__Web_Technologies,https://www.textbook.ds100.org/ch/14/web_intro.html,"{""prefix"": [""web_intro""]}"
+14_1__HTTP,https://www.textbook.ds100.org/ch/14/web_http.html,"{""prefix"": [""web_http""]}"
+14_2__[In_Progress]_REST,https://www.textbook.ds100.org/ch/14/web_rest.html,"{""prefix"": [""web_rest""]}"
+14_3__[In_Progress]_XPath_and_HTML,https://www.textbook.ds100.org/ch/14/web_html.html,"{""prefix"": [""web_html""]}"
+15__Linear_Models,https://www.textbook.ds100.org/ch/15/linear_models.html,"{""prefix"": [""linear_models""]}"
+15_1__Predicting_Tip_Amounts,https://www.textbook.ds100.org/ch/15/linear_tips.html,"{""prefix"": [""linear_tips""]}"
+15_2__[In_progress]_Fitting_a_linear_model,https://www.textbook.ds100.org/ch/15/linear_fitting.html,"{""prefix"": [""linear_fitting""]}"
+15_3__[In_progress]_Inference_for_Linear_Regression,https://www.textbook.ds100.org/ch/15/linear_inference.html,"{""prefix"": [""linear_inference""]}"
+15_4__Least_Squares_—_A_Geometric_Perspective,https://www.textbook.ds100.org/ch/15/linear_projection.html,"{""prefix"": [""linear_projection""]}"
+16__Probability_and_Generalization,https://www.textbook.ds100.org/ch/16/prob_and_gen.html,"{""prefix"": [""prob_and_gen""]}"
+16_1__Random_Variables,https://www.textbook.ds100.org/ch/16/prob_random_vars.html,"{""prefix"": [""prob_random_vars""]}"
+16_2__Expectation_and_Variance,https://www.textbook.ds100.org/ch/16/prob_exp_var.html,"{""prefix"": [""prob_exp_var""]}"
+16_3__Risk,https://www.textbook.ds100.org/ch/16/prob_risk.html,"{""prefix"": [""prob_risk""]}"
+17__Gradient_Descent_and_Numerical_Optimization,https://www.textbook.ds100.org/ch/17/gradient_descent.html,"{""prefix"": [""gradient_descent""]}"
+17_1__Loss_Minimization_Using_a_Program,https://www.textbook.ds100.org/ch/17/gradient_basics.html,"{""prefix"": [""gradient_basics""]}"
+17_2__Gradient_Descent,https://www.textbook.ds100.org/ch/17/gradient_descent_define.html,"{""prefix"": [""gradient_descent_define""]}"
+17_3__Convexity,https://www.textbook.ds100.org/ch/17/gradient_convexity.html,"{""prefix"": [""gradient_convexity""]}"
+17_4__Stochastic_Gradient_Descent,https://www.textbook.ds100.org/ch/17/gradient_stochastic.html,"{""prefix"": [""gradient_stochastic""]}"
+17_5__Fitting_a_Linear_Model_Using_Gradient_Descent,https://www.textbook.ds100.org/ch/17/gradient_lin_reg.html,"{""prefix"": [""gradient_lin_reg""]}"
+18__[In_progress]_Case_Study__Donkey_Dimensions,https://www.textbook.ds100.org/ch/18/donkey_intro.html,"{""prefix"": [""donkey_intro""]}"
+18_1__Linear_Regression_Case_Study,https://www.textbook.ds100.org/ch/18/donkey_analysis.html,"{""prefix"": [""donkey_analysis""]}"
+19__[In_progress]_Multiple_Linear_Regression,https://www.textbook.ds100.org/ch/19/mult_intro.html,"{""prefix"": [""mult_intro""]}"
+19_1__Multiple_Linear_Regression,https://www.textbook.ds100.org/ch/19/mult_model.html,"{""prefix"": [""mult_model""]}"
+19_2__Inference_for_Multiple_Linear_Regression,https://www.textbook.ds100.org/ch/19/mult_inference.html,"{""prefix"": [""mult_inference""]}"
+20__Feature_Engineering,https://www.textbook.ds100.org/ch/20/feature_engineering.html,"{""prefix"": [""feature_engineering""]}"
+20_1__The_Walmart_dataset,https://www.textbook.ds100.org/ch/20/feature_one_hot.html,"{""prefix"": [""feature_one_hot""]}"
+20_2__Predicting_Ice_Cream_Ratings,https://www.textbook.ds100.org/ch/20/feature_polynomial.html,"{""prefix"": [""feature_polynomial""]}"
+21__The_Bias-Variance_Tradeoff,https://www.textbook.ds100.org/ch/21/bias_intro.html,"{""prefix"": [""bias_intro""]}"
+21_1__Risk_and_Loss_Minimization,https://www.textbook.ds100.org/ch/21/bias_risk.html,"{""prefix"": [""bias_risk""]}"
+21_2__Model_Bias_and_Variance,https://www.textbook.ds100.org/ch/21/bias_modeling.html,"{""prefix"": [""bias_modeling""]}"
+21_3__Cross-Validation,https://www.textbook.ds100.org/ch/21/bias_cv.html,"{""prefix"": [""bias_cv""]}"
+22__Regularization,https://www.textbook.ds100.org/ch/22/reg_intro.html,"{""prefix"": [""reg_intro""]}"
+22_1__Regularization_Intuition,https://www.textbook.ds100.org/ch/22/reg_intuition.html,"{""prefix"": [""reg_intuition""]}"
+22_2__L2_Regularization__Ridge_Regression,https://www.textbook.ds100.org/ch/22/reg_ridge.html,"{""prefix"": [""reg_ridge""]}"
+22_3__L1_Regularization__Lasso_Regression,https://www.textbook.ds100.org/ch/22/reg_lasso.html,"{""prefix"": [""reg_lasso""]}"
+23__[In_progress]_Case_Study__Multiple_Linear_Models,https://www.textbook.ds100.org/ch/23/mult_case_intro.html,"{""prefix"": [""mult_case_intro""]}"
+24__Classification,https://www.textbook.ds100.org/ch/24/classification_intro.html,"{""prefix"": [""classification_intro""]}"
+24_1__Regression_on_Probabilities,https://www.textbook.ds100.org/ch/24/classification_prob.html,"{""prefix"": [""classification_prob""]}"
+24_2__The_Logistic_Model,https://www.textbook.ds100.org/ch/24/classification_log_model.html,"{""prefix"": [""classification_log_model""]}"
+24_3__A_Loss_Function_for_the_Logistic_Model,https://www.textbook.ds100.org/ch/24/classification_cost.html,"{""prefix"": [""classification_cost""]}"
+24_4__Using_Logistic_Regression,https://www.textbook.ds100.org/ch/24/classification_log_reg.html,"{""prefix"": [""classification_log_reg""]}"
+24_5__Approximating_the_Empirical_Probability_Distribution,https://www.textbook.ds100.org/ch/24/classification_cost_justification.html,"{""prefix"": [""classification_cost_justification""]}"
+24_6__Fitting_a_Logistic_Model,https://www.textbook.ds100.org/ch/24/classification_sgd.html,"{""prefix"": [""classification_sgd""]}"
+24_7__Evaluating_Logistic_Models,https://www.textbook.ds100.org/ch/24/classification_sensitivity_specificity.html,"{""prefix"": [""classification_sensitivity_specificity""]}"
+24_8__Multiclass_Classification,https://www.textbook.ds100.org/ch/24/classification_multiclass.html,"{""prefix"": [""classification_multiclass""]}"
+25__[In_progress]_Replicable_Research,https://www.textbook.ds100.org/ch/25/repl_intro.html,"{""prefix"": [""repl_intro""]}"
+25_1__P-hacking,https://www.textbook.ds100.org/ch/25/repl_phacking.html,"{""prefix"": [""repl_phacking""]}"
+26__Dimensionality_Reduction_and_PCA,https://www.textbook.ds100.org/ch/26/pca_intro.html,"{""prefix"": [""pca_intro""]}"
+26_1__Dimensions_of_a_Data_Table,https://www.textbook.ds100.org/ch/26/pca_dims.html,"{""prefix"": [""pca_dims""]}"
+26_2__PCA_using_the_Singular_Value_Decomposition,https://www.textbook.ds100.org/ch/26/pca_svd.html,"{""prefix"": [""pca_svd""]}"
+26_3__PCA_in_Practice,https://www.textbook.ds100.org/ch/26/pca_in_practice.html,"{""prefix"": [""pca_in_practice""]}"
+27__[In_progress]_Decision_Trees_and_Random_Forests,https://www.textbook.ds100.org/ch/27/dtrees_intro.html,"{""prefix"": [""dtrees_intro""]}"
+28__[In_progress]_Clustering,https://www.textbook.ds100.org/ch/28/clustering_intro.html,"{""prefix"": [""clustering_intro""]}"
+Probability_Review,https://www.textbook.ds100.org/ch/a01/prob_review.html,"{""prefix"": [""prob_review""]}"
+Vector_Space_Review,https://www.textbook.ds100.org/ch/a02/vector_space_review.html,"{""prefix"": [""vector_space_review""]}"
+Statistical_Inference_Review,https://www.textbook.ds100.org/ch/a03/hyp_intro.html,"{""prefix"": [""hyp_intro""]}"
+Hypothesis_Testing_and_Confidence_Intervals,https://www.textbook.ds100.org/ch/a03/hyp_introduction.html,"{""prefix"": [""hyp_introduction""]}"
+Permutation_Test,https://www.textbook.ds100.org/ch/a03/hyp_introduction_part2.html,"{""prefix"": [""hyp_introduction_part2""]}"
+Reference_Tables,https://www.textbook.ds100.org/ch/a04/ref_intro.html,"{""prefix"": [""ref_intro""]}"
+pandas,https://www.textbook.ds100.org/ch/a04/ref_pandas.html,"{""prefix"": [""ref_pandas""]}"
+Seaborn,https://www.textbook.ds100.org/ch/a04/ref_seaborn.html,"{""prefix"": [""ref_seaborn""]}"
+matplotlib,https://www.textbook.ds100.org/ch/a04/ref_matplotlib.html,"{""prefix"": [""ref_matplotlib""]}"
+scikit-learn,https://www.textbook.ds100.org/ch/a04/ref_sklearn.html,"{""prefix"": [""ref_sklearn""]}"
+Contributors,https://www.textbook.ds100.org/ch/a05/contributors.html,"{""prefix"": [""contributors""]}"
+References,https://www.textbook.ds100.org/references.html,"{""prefix"": [""references""]}"
