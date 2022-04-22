@@ -98,13 +98,19 @@ def embed_hierarchy(content):
     for c in content:
         if header := re.match(r'h(\d)', c[0]):
             level = int(header.group(1))
-            if stack[-1].header == c[1] and stack[-1].level == level:
-                # Header repeats from previous section, do nothing
-                continue
-            while len(stack) and stack[-1].level >= level:
+            while stack[-1].level > level:
                 stack.pop()
+            siblings = []
+            idx = len(stack) - 1
+            while stack[idx].level == level:
+                siblings.append(stack[idx].header)
+                idx -= 1
+            if c[1] in siblings:
+                # Head is already seen at a sibling node, reuse last header
+                stack[-1].contents.append({'tag': 'plain', 'text': c[1]})
+                continue
             section = Section(level, c[1])
-            stack[-1].children.append(section)
+            stack[idx].children.append(section)
             stack.append(section)
         else:
             if len(stack) > 1:
