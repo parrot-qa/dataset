@@ -26,7 +26,19 @@ def collate_course(meta):
             with open(ffile) as fp:
                 for pair in json.load(fp):
                     pair['course'] = course
-                    qa_pairs.append(pair)
+                    answers = [pair['student_answer'], pair['instructor_answer']]
+                    answers = [ans for ans in answers if ans != '']
+                    qa_pairs.append({
+                        'q_id': pair["id"],
+                        'title': f'{pair["subject"]} {pair["content"]}',
+                        'answers': {
+                            'a_id': [f'{pair["id"]}{idx+1}' for idx in range(len(answers))],
+                            'text': answers,
+                            'score': [1] * len(answers)
+                        },
+                        'course': course,
+                        'tags': pair['folders']
+                    })
         except Exception as e:
             print(f'Aborting forum midway due to error: {course} {fname}')
             print(' >', e)
@@ -56,7 +68,7 @@ def display_stats(qa_pairs, documents):
     qa_df = pd.DataFrame(qa_pairs)
     doc_df = pd.DataFrame(documents)
 
-    qa_stat = qa_df.groupby('course').agg({'content': 'count'})
+    qa_stat = qa_df.groupby('course').agg({'title': 'count'})
     qa_stat.columns = ['count']
 
     doc_stat = doc_df.groupby('course').agg({'passage_text': 'count'})
