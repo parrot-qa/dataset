@@ -27,6 +27,12 @@ class Section:
         self.length = length
         return length
 
+    def prune_empty(self):
+        for child in self.children:
+            child.prune_empty()
+
+        self.children = list(filter(lambda child: child.length > 0, self.children))
+
 
 def _get_root(soup):
     """Find the "root" tag which has the main content."""
@@ -92,6 +98,9 @@ def embed_hierarchy(content):
     for c in content:
         if header := re.match(r'h(\d)', c[0]):
             level = int(header.group(1))
+            if stack[-1].header == c[1] and stack[-1].level == level:
+                # Header repeats from previous section, do nothing
+                continue
             while len(stack) and stack[-1].level >= level:
                 stack.pop()
             section = Section(level, c[1])
@@ -106,6 +115,7 @@ def embed_hierarchy(content):
                 })
 
     stack[0].compute_length()
+    stack[0].prune_empty()
     return stack[0]
 
 
@@ -113,19 +123,25 @@ def partition_docs(node, threshold=DOCUMENT_PARTITION_LENGTH, prefix=[]):
     doc = []
     next_prefix = prefix + [node.header] if node.header else prefix
 
-    if node.contents:
+    self_length = sum(len(c['text']) for c in node.contents)
+    if self_length:
         doc.append({'title': ': '.join(next_prefix), 'contents': node.contents})
     if len(node.children) == 0:
         return doc
 
-    if any(child.length < threshold for child in node.children):
+    if ((self_length > 0 and self_length < threshold) or
+            any(child.length < threshold for child in node.children)):
         # Children content is too short to be used individually, merge them
         if len(doc) == 0:
             doc.append({'title': ': '.join(next_prefix), 'contents': []})
         for child in node.children:
             for subdoc in partition_docs(child, prefix=next_prefix):
-                doc[0]['contents'].append({'tag': 'plain', 'text': subdoc['title']})
-                doc[0]['contents'].extend(subdoc['contents'])
+                if not doc[-1]['title']:
+                    # Sometimes the root has no title but multiple children. If so, use the first child's title as document title.
+                    doc[-1]['title'] = subdoc['title']
+                else:
+                    doc[-1]['contents'].append({'tag': 'plain', 'text': subdoc['title']})
+                doc[-1]['contents'].extend(subdoc['contents'])
     else:
         for child in node.children:
             doc.extend(partition_docs(child, prefix=next_prefix))
@@ -134,7 +150,9 @@ def partition_docs(node, threshold=DOCUMENT_PARTITION_LENGTH, prefix=[]):
 
 
 # TODO:
-# - Verify that extra whitespace in all documents are removed (both HTML and PDF)
+# - Remove code blocks early on from parser. Post-removal leads to a sudden drop in document sizes.
+# - Verify that extra whitespace in all documents are removed. Otherwise header will be wrongly retained.
+# - Prune sections that are flagged as "only print"?
 # - Test for PPTs, and books which gave errors or very short documents earlier.
 
 def extract_text(path, threshold=DOCUMENT_PARTITION_LENGTH) -> list[dict]:
