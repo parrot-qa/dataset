@@ -66,14 +66,14 @@ def get_answers(post):
     for child in children_posts:
         if child.get("type") == "i_answer":
             instructor_answer = child.get("history")[-1].get("content")
-            if child.get("history")[-1].get("tag_endorse_arr"):
-                instructor_answer_thanks = len(child.get("history")[-1].get("tag_endorse_arr"))
+            if child.get("tag_endorse_arr"):
+                instructor_answer_thanks = len(child.get("tag_endorse_arr"))
             else: 
                 instructor_answer_thanks = 0
         if child.get("type") == "s_answer":
             student_answer = child.get("history")[-1].get("content")
-            if child.get("history")[-1].get("tag_endorse_arr"):
-                student_answer_thanks = len(child.get("history")[-1].get("tag_endorse_arr"))
+            if child.get("tag_endorse_arr"):
+                student_answer_thanks = len(child.get("tag_endorse_arr"))
             else:
                 student_answer_thanks = 0
     return instructor_answer, instructor_answer_thanks, student_answer, student_answer_thanks
