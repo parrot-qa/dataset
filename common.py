@@ -5,6 +5,8 @@ import pandas as pd
 
 DATA_DIR = '.cache'
 
+MIN_DOCUMENT_TOKEN_COUNT = 10
+
 
 class ArgsWrapper:
     """Wrap (key, value) arguments into properties."""

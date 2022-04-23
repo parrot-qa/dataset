@@ -1,7 +1,7 @@
 name,uri,pflags
 syllabus,https://cs61a.org/articles/about/
-spring_2022_midterm1_walkthrough,https://cs61a.org/exam/sp22/mt1/guide/,"{""max_depth"": 1}"
-spring_2022_midterm2_walkthrough,https://cs61a.org/exam/sp22/mt2/guide/,"{""max_depth"": 1}"
+spring_2022_midterm1_walkthrough,https://cs61a.org/exam/sp22/mt1/guide/
+spring_2022_midterm2_walkthrough,https://cs61a.org/exam/sp22/mt2/guide/
 slides_welcome,https://cs61a.org/assets/slides/01-Welcome!.html
 slides_functions,https://cs61a.org/assets/slides/02-Functions.html
 slides_control,https://cs61a.org/assets/slides/03-Control.html

@@ -1,10 +1,12 @@
 import os
 import json
 import glob
+import re
 
 import pandas as pd
 
-from common import DATA_DIR, setup_dir, read_spec, validate_spec, ArgsWrapper
+from common import DATA_DIR, MIN_DOCUMENT_TOKEN_COUNT
+from common import setup_dir, read_spec, validate_spec, ArgsWrapper
 from parsers import html, pdf, piazza
 
 
@@ -31,6 +33,12 @@ def validate_qa_list(pairs):
 def validate_doc(doc):
     if not doc.get('title', '').strip():
         raise RuntimeError('Document title is empty or missing.')
+
+    paras = [c['text'] for c in doc['contents']]
+    text = ' '.join(paras)
+    tokens = re.split(r'\s+', text)
+    if len(tokens) < MIN_DOCUMENT_TOKEN_COUNT:
+        raise ValueError(f'Document text is too short: Minimum {MIN_DOCUMENT_TOKEN_COUNT} words expected.')
 
 
 def validate_doc_list(docs):
@@ -60,6 +68,9 @@ def parse_material(args):
         raise RuntimeError('Could not find material, run dlutil first.')
     else:
         raise RuntimeError('Multiple materials found, please remove duplicates.')
+
+    if len(spans) == 0:
+        raise RuntimeError('No text found by parser.')
 
     for span in spans:
         validate_doc(span)
