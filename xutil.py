@@ -16,6 +16,26 @@ def collate_document(doc, skip=['code']):
     return title, ' '.join(text)
 
 
+def collate_answers(pair):
+    answers = [pair['student_answer'], pair['instructor_answer']]
+    scores = [pair['student_answer_thanks_count'], pair['instructor_answer_thanks_count']]
+
+    records = {
+        'a_id': [],
+        'text': [],
+        'score': []
+    }
+    for i in range(len(answers)):
+        if answers[i] == '':
+            continue
+        else:
+            records['a_id'].append(pair["id"] + str(i + 1))
+            records['text'].append(answers[i])
+            records['score'].append(scores[i] + 1)
+
+    return records
+
+
 def collate_course(meta):
     course = meta.name
 
@@ -25,8 +45,13 @@ def collate_course(meta):
         try:
             with open(ffile) as fp:
                 for pair in json.load(fp):
-                    pair['course'] = course
-                    qa_pairs.append(pair)
+                    qa_pairs.append({
+                        'q_id': pair['id'],
+                        'title': f'{pair["subject"]} {pair["content"]}',
+                        'answers': collate_answers(pair),
+                        'course': course,
+                        'tags': pair['folders']
+                    })
         except Exception as e:
             print(f'Aborting forum midway due to error: {course} {fname}')
             print(' >', e)
@@ -56,7 +81,7 @@ def display_stats(qa_pairs, documents):
     qa_df = pd.DataFrame(qa_pairs)
     doc_df = pd.DataFrame(documents)
 
-    qa_stat = qa_df.groupby('course').agg({'content': 'count'})
+    qa_stat = qa_df.groupby('course').agg({'title': 'count'})
     qa_stat.columns = ['count']
 
     doc_stat = doc_df.groupby('course').agg({'passage_text': 'count'})

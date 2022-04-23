@@ -59,14 +59,24 @@ def extract_question_posts(post_list):
 
 def get_answers(post):
     instructor_answer = ""
+    instructor_answer_thanks = 0
     student_answer = ""
+    student_answer_thanks = 0
     children_posts = post.get("children")
     for child in children_posts:
         if child.get("type") == "i_answer":
             instructor_answer = child.get("history")[-1].get("content")
+            if child.get("tag_endorse_arr"):
+                instructor_answer_thanks = len(child.get("tag_endorse_arr"))
+            else: 
+                instructor_answer_thanks = 0
         if child.get("type") == "s_answer":
             student_answer = child.get("history")[-1].get("content")
-    return instructor_answer, student_answer
+            if child.get("tag_endorse_arr"):
+                student_answer_thanks = len(child.get("tag_endorse_arr"))
+            else:
+                student_answer_thanks = 0
+    return instructor_answer, instructor_answer_thanks, student_answer, student_answer_thanks
 
 
 def get_question_content(post):
@@ -86,14 +96,18 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
     answered_questions = extract_question_posts(raw_QA)
     formatted_QA = []
     for post in answered_questions:
-        i_answer, s_answer = get_answers(post)
+        i_answer, i_thanks_count, s_answer, s_thanks_count = get_answers(post)
         post_dict = {"id": post.get("id"),
                      "tag_num": post.get("nr"),
                      "subject": get_subject(post),
                      "content": extract_text_basic(get_question_content(post)),
                      "student_answer": extract_text_basic(s_answer),
+                     "student_answer_thanks_count": s_thanks_count,
                      "instructor_answer": extract_text_basic(i_answer),
-                     "folders": post.get("folders")}
+                     "instructor_answer_thanks_count": i_thanks_count,
+                     "folders": post.get("folders"),
+                     "good_question_count": len(post.get("tag_good"))}
+         
         if (post_dict["student_answer"] + post_dict["instructor_answer"]) == "":
             # Answer exists but is probably not text, so skip this post
             continue
