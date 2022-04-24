@@ -89,11 +89,10 @@ def get_subject(post):
 def get_answerability(post):
     str_list_content = ["my grade", "waitlist", "stolen", "lost", "png", "jpeg", "howamidoing"]
     str_list_i_answer = ["private", "email me", "email us", "privately", "resolved"]
-    content_clean = extract_text_basic(post.get("content")).lower()
-    i_answer_clean = extract_text_basic(post.get("instructor_answer")).lower()
-    content = post.get("content")
-    i_answer = post.get("instructor_answer")
-    if any(ext in content for ext in str_list_content) or any(ext in i_answer for ext in str_list_i_answer):
+    
+    content_clean = re.sub(r'[^\w\s]', '', extract_text_basic(post.get("content")).lower())
+    i_answer_clean = re.sub(r'[^\w\s]', '', extract_text_basic(post.get("instructor_answer")).lower())
+    if any(ext in content_clean for ext in str_list_content) or any(ext in i_answer_clean for ext in str_list_i_answer):
         result = False
     else:
         result = True
