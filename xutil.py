@@ -50,7 +50,8 @@ def collate_course(meta):
                         'title': f'{pair["subject"]} {pair["content"]}',
                         'answers': collate_answers(pair),
                         'course': course,
-                        'tags': pair['folders']
+                        'tags': pair['folders'],
+                        'is_answerable': pair['is_answerable']
                     })
         except Exception as e:
             print(f'Aborting forum midway due to error: {course} {fname}')
@@ -81,8 +82,8 @@ def display_stats(qa_pairs, documents):
     qa_df = pd.DataFrame(qa_pairs)
     doc_df = pd.DataFrame(documents)
 
-    qa_stat = qa_df.groupby('course').agg({'title': 'count'})
-    qa_stat.columns = ['count']
+    qa_stat = qa_df.groupby('course').agg({'title': 'count', 'is_answerable': 'sum'})
+    qa_stat.columns = ['count', 'answerable']
 
     doc_stat = doc_df.groupby('course').agg({'passage_text': 'count'})
     doc_stat.columns = ['count']
