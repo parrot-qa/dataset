@@ -86,6 +86,18 @@ def get_question_content(post):
 def get_subject(post):
     return post.get("history")[-1].get("subject")
 
+def get_answerability(post):
+    str_list_content = ["my grade", "waitlist", "stolen", "lost", "png", "jpeg", "howamidoing"]
+    str_list_i_answer = ["private", "email me", "email us", "privately", "resolved"]
+    
+    content_clean = re.sub(r'[^\w\s]', '', extract_text_basic(post.get("content")).lower())
+    i_answer_clean = re.sub(r'[^\w\s]', '', extract_text_basic(post.get("instructor_answer")).lower())
+    if any(ext in content_clean for ext in str_list_content) or any(ext in i_answer_clean for ext in str_list_i_answer):
+        result = False
+    else:
+        result = True
+    return result
+
 
 def extract_qa(path, *args, **kwargs) -> list[dict]:
     """Take a file path as input, and return a list of question-answers."""
@@ -111,6 +123,7 @@ def extract_qa(path, *args, **kwargs) -> list[dict]:
         if (post_dict["student_answer"] + post_dict["instructor_answer"]) == "":
             # Answer exists but is probably not text, so skip this post
             continue
+        post_dict["is_answerable"] = get_answerability(post_dict)
         formatted_QA.append(post_dict)
     final_QA = trace_back_check(formatted_QA, raw_QA)
     return final_QA
