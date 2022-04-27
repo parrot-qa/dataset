@@ -4,7 +4,9 @@ import re
 from bs4 import BeautifulSoup
 
 
-VALID_TAGS = re.compile(r'^(?:h\d|p|span|ul|ol|pre|code|table)$')
+# To capture code, add the following: |pre|code
+VALID_TAGS = re.compile(r'^(?:h\d|p|span|ul|ol|table)$')
+
 DOCUMENT_PARTITION_LENGTH = 100
 
 
