@@ -153,3 +153,27 @@ matplotlib,https://www.textbook.ds100.org/ch/a04/ref_matplotlib.html,"{""prefix"
 scikit-learn,https://www.textbook.ds100.org/ch/a04/ref_sklearn.html,"{""prefix"": [""ref_sklearn""]}"
 Contributors,https://www.textbook.ds100.org/ch/a05/contributors.html,"{""prefix"": [""contributors""]}"
 References,https://www.textbook.ds100.org/references.html,"{""prefix"": [""references""]}"
+lecture_1_overview,https://ds100.org/sp19/assets/lectures/lec01.pdf
+lecture_2_study_design,https://ds100.org/sp19/assets/lectures/lec02.pdf
+lecture_3_pandas,https://docs.google.com/presentation/d/1j-rNsz8WbmHMj1TLp-Ap4MAipo_zbu_KX1J9waP-fAg/edit?usp=sharing
+lecture_4_cleaning,https://docs.google.com/presentation/d/1mQKWp8tHC8rVDUOO69P0wQf4jsj-CvMk4AA73VK0QM0/edit?usp=sharing
+lecture_5_visualization1,https://ds100.org/sp19/assets/lectures/lec4/visualization.pdf
+lecture_6_visualization2,https://ds100.org/sp19/assets/lectures/lec5/visualization.pdf
+lecture_7_eda_working_with_text,https://docs.google.com/presentation/d/1Qd92eHRNx3Hx7GHm7veMLXbnuBwwhl168cLMnzEgixY/edit?usp=sharing
+lecture_8_sql,https://docs.google.com/presentation/d/1VtOxzUE-qynAnJ3JmDyJ1WfjZTUixTihpcXZI4-uWX8/edit?usp=sharing
+lecture_9_dimensionality_reduction,https://docs.google.com/presentation/d/1qcAB9vvulo0Xqd1Ix7X2SgVUx4cJh_Lvp2NXl2QItHs/edit?usp=sharing
+lecture_10_pca,https://docs.google.com/presentation/d/10q_ei9ddX0TBqOq2u2_jVr1F6Hxa9T0XDnom-ZukLV8/edit?usp=sharing
+lecture_11_case_study,https://docs.google.com/presentation/d/1q_67p0lzXLP0jRPmQbTdY8gSfL0ya8lnTKuFq__J4NQ/edit?usp=sharing
+lecture_13_statistical_inference,https://ds100.org/sp19/assets/lectures/lec12/inference.pdf
+lecture_15_linear_regression_feature_engineering,https://ds100.org/sp19/assets/lectures/linRegn.pdf
+lecture_16_gradient_descent,https://ds100.org/sp19/assets/lectures/gradientDescent.pdf
+lecture_17_risk_optimization_bias_variance_trade_off,https://ds100.org/sp19/assets/lectures/biasVarTradeoff.pdf
+lecture_21_logistic_regression,https://docs.google.com/presentation/d/1Sut2bvlioC5vKto6fgStzMipfoMgOR-pXBbqkHKoAOw/edit?usp=sharing
+lecture_22_classification,https://docs.google.com/presentation/d/1Y799sM2f3tQQ_XJAVMZ2MK2sh9kAgD-EJQkCJNHDNdo/edit?usp=sharing
+lecture_23_prediction_classification_and_regression,https://ds100.org/sp19/assets/lectures/prediction.pdf
+lecture_27_big_data_and_spark,https://ds100.org/sp19/assets/lectures/bigData.pdf
+lecture_28_distributed_computing,https://docs.google.com/presentation/d/1jaF-fKu4e2sG5YrfiD7-rCiaGzHo0j6EhplGu2xL_bc/edit?usp=sharing
+lecture_30_review_and_conclusion,https://docs.google.com/presentation/d/1ma6X9gZXMu-75Yyx7QwBtpOF_zP9IM-221sAWRx8KTY/edit?usp=sharing
+midterm1_solutions,https://ds100.org/sp19/assets/exams/sp19/data100_sp19_mt1_sol.pdf
+midterm2_solutions,https://ds100.org/sp19/assets/exams/sp19/data100_sp19_mt2_sol.pdf
+final_solutions,https://ds100.org/sp19/assets/exams/sp19/data100_sp19_final_sol.pdf
