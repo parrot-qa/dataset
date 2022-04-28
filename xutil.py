@@ -47,7 +47,7 @@ def collate_course(meta):
                 for pair in json.load(fp):
                     qa_pairs.append({
                         'q_id': pair['id'],
-                        'title': f'{pair["subject"]} {pair["content"]}',
+                        'title': f'{pair["subject"]} . {pair["content"]}',
                         'answers': collate_answers(pair),
                         'course': course,
                         'tags': pair['folders'],
