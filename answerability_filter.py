@@ -72,8 +72,8 @@ def get_answerability(file_sentences, post):
         sentences = file_sentences.get(course, None)
         if sentences is not None:
             similarity = [(i, get_sent_vector(sent, title)) for i, sent in enumerate(sentences)]
-            similarity.sort(key=lambda x: x[1], reverse=True)
-            return similarity[0][1] > 0.82
+            max_similarity = max(similarity, key=lambda x: x[1])[1]
+            return max_similarity > 0.82
 
     return is_answerable
 
@@ -85,5 +85,5 @@ file_sentences = get_documents(qa_json['documents'])
 for qa_pair in qa_json["qa_pairs"]:
     qa_pair["is_answerable"] = bool(get_answerability(file_sentences, qa_pair))
 
-with open(os.path.join(DATA_DIR, "parrot-qa-2.json"), "w") as f:
+with open(os.path.join(DATA_DIR, "parrot-qa-filtered.json"), "w") as f:
     json.dump(qa_json, f, indent=4)
