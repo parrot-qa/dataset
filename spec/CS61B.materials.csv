@@ -1,4 +1,4 @@
-name,uri
+name,uri,pflags
 lec1_intro,https://inst.eecs.berkeley.edu/~cs61b/sp22/materials/lectures/lect1.pdf
 lec2_programming,https://inst.eecs.berkeley.edu/~cs61b/sp22/materials/lectures/lect2.pdf
 lec3_values_and_containers,https://inst.eecs.berkeley.edu/~cs61b/sp22/materials/lectures/lect3.pdf
@@ -43,7 +43,7 @@ book_2_3,https://joshhug.gitbooks.io/hug61b/content/chap2/chap23.html
 book_2_4,https://joshhug.gitbooks.io/hug61b/content/chap2/chap24.html
 book_2_5,https://joshhug.gitbooks.io/hug61b/content/chap2/chap25.html
 book_4_1,https://joshhug.gitbooks.io/hug61b/content/chap4/chap41.html
-book_4_2,https://joshhug.gitbooks.io/hug61b/content/chap4/chap42.html
+book_4_2,https://joshhug.gitbooks.io/hug61b/content/chap4/chap42.html,"{""prefix"": [""inheritence""]}"
 book_4_3,https://joshhug.gitbooks.io/hug61b/content/chap4/chap43.html
 book_6_1,https://joshhug.gitbooks.io/hug61b/content/chap6/chap61.html
 book_6_2,https://joshhug.gitbooks.io/hug61b/content/chap6/chap62.html

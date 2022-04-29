@@ -194,6 +194,7 @@ def extract_text(path, **partition_args) -> list[dict]:
 def extract_text_basic(html):
     soup = BeautifulSoup(html, features='html.parser')
     text = ' '.join(soup.stripped_strings)
+    text = re.sub(r'[\s\n]+', ' ', text)
     return text
 
 

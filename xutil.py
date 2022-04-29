@@ -123,7 +123,7 @@ def export_dataset(args):
         json.dump({
             'qa_pairs': qa_pairs,
             'documents': documents
-        }, fp)
+        }, fp, indent=4)
         print(f'\nGenerated dataset in: {db_file}')
         display_stats(qa_pairs, documents)
 
