@@ -4,7 +4,9 @@ import re
 from bs4 import BeautifulSoup
 
 
-VALID_TAGS = re.compile(r'^(?:h\d|p|span|ul|ol|pre|code|table)$')
+# To capture code, add the following: |pre|code
+VALID_TAGS = re.compile(r'^(?:h\d|p|span|ul|ol|table)$')
+
 DOCUMENT_PARTITION_LENGTH = 100
 
 
@@ -192,6 +194,7 @@ def extract_text(path, **partition_args) -> list[dict]:
 def extract_text_basic(html):
     soup = BeautifulSoup(html, features='html.parser')
     text = ' '.join(soup.stripped_strings)
+    text = re.sub(r'[\s\n]+', ' ', text)
     return text
 
 

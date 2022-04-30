@@ -37,7 +37,7 @@ Notation,https://www.textbook.ds100.org/notation.html,"{""prefix"": [""notation"
 6_3__Joining,https://www.textbook.ds100.org/ch/06/pandas_joining.html,"{""prefix"": [""pandas_joining""]}"
 6_4__Transforming,https://www.textbook.ds100.org/ch/06/pandas_transforming.html,"{""prefix"": [""pandas_transforming""]}"
 6_5__How_are_Dataframes_Different_from_Other_Data_Representations_,https://www.textbook.ds100.org/ch/06/pandas_other_reps.html,"{""prefix"": [""pandas_other_reps""]}"
-6_6__Conclusion,https://www.textbook.ds100.org/ch/06/pandas_conclusion.html,"{""prefix"": [""pandas_conclusion""]}"
+6_6__Summary,https://www.textbook.ds100.org/ch/06/pandas_summary.html,"{""prefix"": [""pandas_summary""]}"
 6_7__Exercises,https://www.textbook.ds100.org/ch/06/pandas_exercises.html,"{""prefix"": [""pandas_exercises""]}"
 7__Working_With_Relations_Using_SQL,https://www.textbook.ds100.org/ch/07/sql_intro.html,"{""prefix"": [""sql_intro""]}"
 7_1__Subsetting,https://www.textbook.ds100.org/ch/07/sql_subsetting.html,"{""prefix"": [""sql_subsetting""]}"
@@ -45,7 +45,7 @@ Notation,https://www.textbook.ds100.org/notation.html,"{""prefix"": [""notation"
 7_3__Joining,https://www.textbook.ds100.org/ch/07/sql_joining.html,"{""prefix"": [""sql_joining""]}"
 7_4__Transforming,https://www.textbook.ds100.org/ch/07/sql_transforming.html,"{""prefix"": [""sql_transforming""]}"
 7_5__How_are_Relations_Different_from_Other_Data_Representations_,https://www.textbook.ds100.org/ch/07/sql_other_reps.html,"{""prefix"": [""sql_other_reps""]}"
-7_6__Conclusion,https://www.textbook.ds100.org/ch/07/sql_conclusion.html,"{""prefix"": [""sql_conclusion""]}"
+7_6__Conclusion,https://www.textbook.ds100.org/ch/07/sql_summary.html,"{""prefix"": [""sql_summary""]}"
 7_7__Exercises,https://www.textbook.ds100.org/ch/07/sql_exercises.html,"{""prefix"": [""sql_exercises""]}"
 8__Wrangling_Files,https://www.textbook.ds100.org/ch/08/files_intro.html,"{""prefix"": [""files_intro""]}"
 8_1__Data_Source_Examples,https://www.textbook.ds100.org/ch/08/files_datasets.html,"{""prefix"": [""files_datasets""]}"
@@ -85,9 +85,10 @@ Notation,https://www.textbook.ds100.org/notation.html,"{""prefix"": [""notation"
 12_5__In_Conclusion,https://www.textbook.ds100.org/ch/12/pa_conclusion.html,"{""prefix"": [""pa_conclusion""]}"
 12_6__Exercises,https://www.textbook.ds100.org/ch/12/pa_exercises.html,"{""prefix"": [""pa_exercises""]}"
 13__Working_with_Text,https://www.textbook.ds100.org/ch/13/text_intro.html,"{""prefix"": [""text_intro""]}"
-13_1__Python_String_Methods,https://www.textbook.ds100.org/ch/13/text_strings.html,"{""prefix"": [""text_strings""]}"
-13_2__Regular_Expressions,https://www.textbook.ds100.org/ch/13/text_regex.html,"{""prefix"": [""text_regex""]}"
-13_3__Regex_and_Python,https://www.textbook.ds100.org/ch/13/text_re.html,"{""prefix"": [""text_re""]}"
+13_1__Examples_of_Text_and_Tasks,https://www.textbook.ds100.org/ch/13/text_examples.html,"{""prefix"": [""text_examples""]}"
+13_2__String_Manipulation,https://www.textbook.ds100.org/ch/13/text_strings.html,"{""prefix"": [""text_strings""]}"
+13_3__Regular_Expressions,https://www.textbook.ds100.org/ch/13/text_regex.html,"{""prefix"": [""text_regex""]}"
+13_4__Regex_and_Python,https://www.textbook.ds100.org/ch/13/text_re.html,"{""prefix"": [""text_re""]}"
 14__Web_Technologies,https://www.textbook.ds100.org/ch/14/web_intro.html,"{""prefix"": [""web_intro""]}"
 14_1__HTTP,https://www.textbook.ds100.org/ch/14/web_http.html,"{""prefix"": [""web_http""]}"
 14_2__[In_Progress]_REST,https://www.textbook.ds100.org/ch/14/web_rest.html,"{""prefix"": [""web_rest""]}"
@@ -153,3 +154,27 @@ matplotlib,https://www.textbook.ds100.org/ch/a04/ref_matplotlib.html,"{""prefix"
 scikit-learn,https://www.textbook.ds100.org/ch/a04/ref_sklearn.html,"{""prefix"": [""ref_sklearn""]}"
 Contributors,https://www.textbook.ds100.org/ch/a05/contributors.html,"{""prefix"": [""contributors""]}"
 References,https://www.textbook.ds100.org/references.html,"{""prefix"": [""references""]}"
+lecture_1_overview,https://ds100.org/sp19/assets/lectures/lec01.pdf
+lecture_2_study_design,https://ds100.org/sp19/assets/lectures/lec02.pdf
+lecture_3_pandas,https://docs.google.com/presentation/d/1j-rNsz8WbmHMj1TLp-Ap4MAipo_zbu_KX1J9waP-fAg/edit?usp=sharing
+lecture_4_cleaning,https://docs.google.com/presentation/d/1mQKWp8tHC8rVDUOO69P0wQf4jsj-CvMk4AA73VK0QM0/edit?usp=sharing
+lecture_5_visualization1,https://ds100.org/sp19/assets/lectures/lec4/visualization.pdf
+lecture_6_visualization2,https://ds100.org/sp19/assets/lectures/lec5/visualization.pdf
+lecture_7_eda_working_with_text,https://docs.google.com/presentation/d/1Qd92eHRNx3Hx7GHm7veMLXbnuBwwhl168cLMnzEgixY/edit?usp=sharing
+lecture_8_sql,https://docs.google.com/presentation/d/1VtOxzUE-qynAnJ3JmDyJ1WfjZTUixTihpcXZI4-uWX8/edit?usp=sharing
+lecture_9_dimensionality_reduction,https://docs.google.com/presentation/d/1qcAB9vvulo0Xqd1Ix7X2SgVUx4cJh_Lvp2NXl2QItHs/edit?usp=sharing
+lecture_10_pca,https://docs.google.com/presentation/d/10q_ei9ddX0TBqOq2u2_jVr1F6Hxa9T0XDnom-ZukLV8/edit?usp=sharing
+lecture_11_case_study,https://docs.google.com/presentation/d/1q_67p0lzXLP0jRPmQbTdY8gSfL0ya8lnTKuFq__J4NQ/edit?usp=sharing
+lecture_13_statistical_inference,https://ds100.org/sp19/assets/lectures/lec12/inference.pdf
+lecture_15_linear_regression_feature_engineering,https://ds100.org/sp19/assets/lectures/linRegn.pdf
+lecture_16_gradient_descent,https://ds100.org/sp19/assets/lectures/gradientDescent.pdf
+lecture_17_risk_optimization_bias_variance_trade_off,https://ds100.org/sp19/assets/lectures/biasVarTradeoff.pdf
+lecture_21_logistic_regression,https://docs.google.com/presentation/d/1Sut2bvlioC5vKto6fgStzMipfoMgOR-pXBbqkHKoAOw/edit?usp=sharing
+lecture_22_classification,https://docs.google.com/presentation/d/1Y799sM2f3tQQ_XJAVMZ2MK2sh9kAgD-EJQkCJNHDNdo/edit?usp=sharing
+lecture_23_prediction_classification_and_regression,https://ds100.org/sp19/assets/lectures/prediction.pdf
+lecture_27_big_data_and_spark,https://ds100.org/sp19/assets/lectures/bigData.pdf
+lecture_28_distributed_computing,https://docs.google.com/presentation/d/1jaF-fKu4e2sG5YrfiD7-rCiaGzHo0j6EhplGu2xL_bc/edit?usp=sharing
+lecture_30_review_and_conclusion,https://docs.google.com/presentation/d/1ma6X9gZXMu-75Yyx7QwBtpOF_zP9IM-221sAWRx8KTY/edit?usp=sharing
+midterm1_solutions,https://ds100.org/sp19/assets/exams/sp19/data100_sp19_mt1_sol.pdf
+midterm2_solutions,https://ds100.org/sp19/assets/exams/sp19/data100_sp19_mt2_sol.pdf
+final_solutions,https://ds100.org/sp19/assets/exams/sp19/data100_sp19_final_sol.pdf

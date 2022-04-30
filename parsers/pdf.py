@@ -12,7 +12,9 @@ def extract_text(path, *args, **kwargs) -> list[dict]:
         for element in page_layout:
             if isinstance(element, LTTextContainer):
                 paragraph_text.append(clean_paragraph(element.get_text()))
-    title = os.path.splitext(path)[0].split("/")[-1]
+    title = os.path.split(path)[1]
+    assert title.endswith('.pdf')
+    title = title[:-4]
     
     return to_json(title, paragraph_text) 
 

@@ -47,7 +47,7 @@ def collate_course(meta):
                 for pair in json.load(fp):
                     qa_pairs.append({
                         'q_id': pair['id'],
-                        'title': f'{pair["subject"]} {pair["content"]}',
+                        'title': f'{pair["subject"]} . {pair["content"]}',
                         'answers': collate_answers(pair),
                         'course': course,
                         'tags': pair['folders'],
@@ -123,7 +123,7 @@ def export_dataset(args):
         json.dump({
             'qa_pairs': qa_pairs,
             'documents': documents
-        }, fp)
+        }, fp, indent=4)
         print(f'\nGenerated dataset in: {db_file}')
         display_stats(qa_pairs, documents)
 
